@@ -1,0 +1,241 @@
+ul.progress_bar{
+  max-width: 29em;
+  width: 100%;
+  padding: 0 18px;
+  height: 2em;
+  margin: 0;
+  padding: 0;
+  font-size: 10px; /* change font size only to scale*/
+}
+
+ul.progress_bar li{
+  width: 30%;
+  float: left;
+  height: 100%;
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+ul.progress_bar li span{
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #C4C4C4;
+  height: .4em;
+  z-index: 1;
+}
+
+ul.progress_bar li.activated:before{
+  background: #3A9FFD;
+  border: 0.3em solid #3A9FFD;
+  box-sizing: border-box;
+}
+ul.progress_bar li.finished:before{
+  background: #25C03E;
+  border: 0.3em solid #25C03E;
+  box-sizing: border-box;
+}
+
+
+ul.progress_bar li:before{
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #C4C4C4;
+  width: 2em;
+  height: 2em;
+  border-radius: 2em;
+  z-index: 2;
+}
+
+ul.progress_bar li:last-child:after{
+  content: '';
+  display: block;
+  position: absolute;
+  right: -2em;
+  top: 0;
+  background: #C4C4C4;
+  width: 2em;
+  height: 2em;
+  border-radius: 2em;
+  z-index: 2;
+}
+*{
+  font-weight: bold;
+}
+
+/*----------------------*/
+.doing-now{
+  text-align: center;
+}
+.steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.step-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: #C4C4C4;
+  transition: .4s;
+}
+
+.active {
+
+  background-color: #3A9FFD;
+  color: #fff;
+}
+
+
+
+.done {
+  background-color: #25C03E;
+  color: #fff;
+}
+
+.step-item {
+  z-index: 10;
+  text-align: center;
+}
+.steps{
+  width: 550px;
+  margin: 25px auto 25px auto;
+
+}
+#progress1 {
+  -webkit-appearance:none;
+  position: absolute;
+  width: 90%;
+  z-index: 5;
+  height: 10px;
+  margin-left: 18px;
+  margin-bottom: 18px;
+
+}
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+
+}
+/* IE10 */
+progress {
+  color: #25C03E;
+}
+
+/* Firefox */
+progress::-moz-progress-bar {
+  background: #25C03E;
+}
+
+/* Chrome */
+progress::-webkit-progress-value {
+  background: #25C03E;
+}
+
+
+
+.question{
+  color: white;
+  background-color:#286CAB ;
+  height: 40px;
+  width: 500px;
+  padding: 15px;
+  margin-bottom: 0;
+}
+.big-container{
+  display: flex;
+  flex-direction: row;
+}
+.answer-container{
+  background-color: #e7e7e7;
+  width: 500px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.small-container{
+  background-color: #e7e7e7;
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+}
+.Q\&A-container{
+  display: flex;
+  flex-direction: column;
+
+}
+svg{
+  margin-right: 15px;
+}
+.yes{
+  color: #25C03E;
+  margin-right: 25px;
+}
+.no{
+  color: #FD0202;
+}
+.next-btn{
+  width: fit-content;
+  margin-left: auto;
+}
+.upper-container{
+  display: flex;
+  flex-direction: row;
+}
+.about-field{
+  display: flex;
+  flex-direction: column;
+}
+.field-desc{
+  width: 550px;
+}
+li{
+  color: #14538E;
+}
+.field-name{
+  color: #25C03E;
+}
+.recommendation{
+  display: flex;
+  flex-direction: column;
+}
+.non-cs-person,.any-person{
+  display: flex;
+  flex-direction: row;
+}
+.non-cs-courses,.any-courses{
+  display: flex;
+  flex-direction: column;
+}
+/* .drop-down-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+} */
+.dropdown-toggle{
+  flex: none;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.go-to-courses{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.row{
+  padding-bottom: 20px;
+}
