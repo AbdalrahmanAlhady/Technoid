@@ -1,3 +1,7 @@
+.row{
+  padding-bottom: 20px;
+}
+
 ul.progress_bar{
   max-width: 29em;
   width: 100%;
@@ -219,11 +223,7 @@ li{
   display: flex;
   flex-direction: column;
 }
-/* .drop-down-wrapper{
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-} */
+
 .dropdown-toggle{
   flex: none;
   margin: auto;
@@ -236,6 +236,4 @@ li{
   justify-content: space-between;
   align-items: center;
 }
-.row{
-  padding-bottom: 20px;
-}
+
