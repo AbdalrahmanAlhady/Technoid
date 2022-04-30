@@ -1,0 +1,98 @@
+.doing-now-1 {
+  text-align: center;
+  color: #25C03E;
+  margin:auto
+}
+
+.doing-now-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px;
+}
+
+
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
+.col-md-20 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  min-height: 600px;
+  height: max-content;
+  background-color: #f4f5f5d6;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.field-name {
+  align-self: flex-start;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+li {
+  list-style-image: url(../../assets/ci.svg);
+}
+
+.course {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  margin-left: 10px;
+}
+
+.course-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.course-titleLink {
+  display: flex;
+  flex-direction: row;
+  width: 550px;
+}
+
+.course-title {
+  margin-left: 10px;
+  margin-right: auto;
+  color: #14538E;
+  font-weight: bold;
+}
+
+.course-link {
+  color: #25C03E;
+  font-weight: bold;
+
+}
+
+.b-courses {
+  margin-bottom: 50px;
+}
+
+.courses {
+  display: flex;
+  flex-direction: column;
+}
+
+.col-md-20 {
+ 
+}
+
+.sub-course .course-title {
+  color: #5A3392;
+}
+
+.sub-courses-wrapper {
+  margin-left: 25px;
+  margin-top: 5px;
+  width: 550px;
+}
+
+.db {
+  display: flex;
+  flex-direction: row;
+}

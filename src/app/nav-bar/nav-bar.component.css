@@ -1,6 +1,16 @@
+
 nav{
   background-color: #286CAB;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .navbar-brand{
   color: white;
+  margin-left: 5px;
+}
+.brand{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

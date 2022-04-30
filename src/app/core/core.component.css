@@ -1,18 +1,26 @@
-.row{
+.row {
   padding-bottom: 20px;
 }
+.col-md-20 {
+  background-color: #f4f5f5d6;
+  border-radius: 15px;
+  padding: 15px;
+  min-height: 800px;
+  height: max-content;
+}
 
-ul.progress_bar{
+ul.progress_bar {
   max-width: 29em;
   width: 100%;
   padding: 0 18px;
   height: 2em;
   margin: 0;
   padding: 0;
-  font-size: 10px; /* change font size only to scale*/
+  font-size: 10px;
+  /* change font size only to scale*/
 }
 
-ul.progress_bar li{
+ul.progress_bar li {
   width: 30%;
   float: left;
   height: 100%;
@@ -22,7 +30,7 @@ ul.progress_bar li{
   padding: 0;
 }
 
-ul.progress_bar li span{
+ul.progress_bar li span {
   position: absolute;
   display: block;
   top: 0;
@@ -35,19 +43,20 @@ ul.progress_bar li span{
   z-index: 1;
 }
 
-ul.progress_bar li.activated:before{
+ul.progress_bar li.activated:before {
   background: #3A9FFD;
   border: 0.3em solid #3A9FFD;
   box-sizing: border-box;
 }
-ul.progress_bar li.finished:before{
+
+ul.progress_bar li.finished:before {
   background: #25C03E;
   border: 0.3em solid #25C03E;
   box-sizing: border-box;
 }
 
 
-ul.progress_bar li:before{
+ul.progress_bar li:before {
   content: '';
   display: block;
   position: absolute;
@@ -60,7 +69,7 @@ ul.progress_bar li:before{
   z-index: 2;
 }
 
-ul.progress_bar li:last-child:after{
+ul.progress_bar li:last-child:after {
   content: '';
   display: block;
   position: absolute;
@@ -72,14 +81,34 @@ ul.progress_bar li:last-child:after{
   border-radius: 2em;
   z-index: 2;
 }
-*{
+
+* {
   font-weight: bold;
 }
 
 /*----------------------*/
-.doing-now{
-  text-align: center;
+.doing-now-1 {
+  margin-bottom: auto;
+  margin-top: auto;
 }
+
+.doing-now-2 {
+  margin-bottom: auto;
+  margin-top: auto;
+  color: #25C03E;
+}
+
+.doing-now-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px;
+  justify-content: center;
+}
+
+.doing-now-wrapper svg {
+  margin-right: 0;
+}
+
 .steps {
   display: flex;
   justify-content: space-between;
@@ -114,13 +143,15 @@ ul.progress_bar li:last-child:after{
   z-index: 10;
   text-align: center;
 }
-.steps{
+
+.steps {
   width: 550px;
   margin: 25px auto 25px auto;
 
 }
+
 #progress1 {
-  -webkit-appearance:none;
+  -webkit-appearance: none;
   position: absolute;
   width: 90%;
   z-index: 5;
@@ -129,10 +160,12 @@ ul.progress_bar li:last-child:after{
   margin-bottom: 18px;
 
 }
+
 progress[value]::-webkit-progress-bar {
   background-color: #eee;
 
 }
+
 /* IE10 */
 progress {
   color: #25C03E;
@@ -150,90 +183,130 @@ progress::-webkit-progress-value {
 
 
 
-.question{
+.question {
   color: white;
-  background-color:#286CAB ;
+  background-color: #286CAB;
   height: 40px;
   width: 500px;
   padding: 15px;
   margin-bottom: 0;
+  border-radius: 15px 15px 0 0;
 }
-.big-container{
+
+.big-container {
   display: flex;
   flex-direction: row;
 }
-.answer-container{
+
+.answer-container {
   background-color: #e7e7e7;
   width: 500px;
   padding: 15px;
   display: flex;
   flex-direction: column;
+  border-radius: 0 0 15px 15px;
 }
-.small-container{
+
+.small-container {
   background-color: #e7e7e7;
   width: 500px;
   display: flex;
   flex-direction: row;
+  border-radius: 0 0 15px 15px;
 }
-.Q\&A-container{
+
+.Q\&A-container {
   display: flex;
   flex-direction: column;
 
 }
-svg{
+
+.spinner-border {
+  width: 10rem;
+  height: 10rem;
+}
+
+svg {
   margin-right: 15px;
 }
-.yes{
+
+.yes {
   color: #25C03E;
   margin-right: 25px;
 }
-.no{
+
+.no {
   color: #FD0202;
 }
-.next-btn{
+
+.next-btn {
   width: fit-content;
   margin-left: auto;
 }
-.upper-container{
+
+.upper-container {
   display: flex;
   flex-direction: row;
 }
-.about-field{
-  display: flex;
-  flex-direction: column;
-}
-.field-desc{
-  width: 550px;
-}
-li{
-  color: #14538E;
-}
-.field-name{
-  color: #25C03E;
-}
-.recommendation{
-  display: flex;
-  flex-direction: column;
-}
-.non-cs-person,.any-person{
-  display: flex;
-  flex-direction: row;
-}
-.non-cs-courses,.any-courses{
+
+.about-field {
   display: flex;
   flex-direction: column;
 }
 
-.dropdown-toggle{
+.field-desc {
+  width: 550px;
+}
+
+li {
+  color: #14538E;
+}
+
+.field-name {
+  color: #25C03E;
+}
+
+.recommendation {
+  display: flex;
+  flex-direction: column;
+}
+
+.non-cs-person,
+.any-person {
+  display: flex;
+  flex-direction: row;
+}
+
+.non-cs-courses,
+.any-courses {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-toggle {
   flex: none;
   margin: auto;
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
-.go-to-courses{
+.go-to-courses {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* trial */
+
+.form-check-input.box {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+.form-check-label.box {
+  margin-bottom: 7px;
+}
+a{
+  cursor: pointer;
 }
 

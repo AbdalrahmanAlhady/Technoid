@@ -1,0 +1,84 @@
+.row {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.col-md-20 {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    align-self: center;
+    min-height: 600px;
+    height: max-content;
+    background-color: #f4f5f5d6;
+    padding: 15px;
+    border-radius: 15px;
+    /* width: 500px; */
+    width: max-content
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 15px;
+
+
+}
+
+input {
+    border-radius: 10px;
+}
+
+label {
+    color: #000000;
+    font-weight: bold;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-title {
+    color: #14538E;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 22px;
+
+}
+.auth-btn{
+    background-color:#25C03E ;
+    color: #ffff;
+    width: fit-content;
+    align-self: flex-end;
+}
+.switch{
+    align-self: center;
+}
+.switch-link{
+   margin-left: 3px; 
+   color: #3A9FFD;
+   cursor: pointer;
+}
+.app-desc{
+    display: flex;
+    flex-direction: column;
+    margin-top: 85px;
+    margin-left: 20px;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.app-name{
+    font-size: 25px;
+    color: #286CAB;
+}
+.bottom{
+    width: 220px;
+}
+

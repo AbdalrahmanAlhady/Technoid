@@ -22,9 +22,12 @@
     "@angular/router": "~13.3.0",
     "bootstrap": "^4.6.0",
     "jquery": "^3.6.0",
+    "ng-particles": "^3.0.6",
     "popper.js": "^1.16.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "tsparticles": "^2.0.6",
+    "tsparticles-engine": "^2.0.6",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

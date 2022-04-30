@@ -9,7 +9,9 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LowerCasePipe } from '@angular/common';
+import { CoreService } from './core.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PassingData } from '../shared/passingData.service';
 
 @Component({
   selector: 'app-core',
@@ -23,20 +25,32 @@ export class CoreComponent implements OnInit, AfterViewInit {
   @ViewChild('progress1') progress1!: ElementRef;
   @ViewChild('Q&A1') q1!: ElementRef;
   @ViewChild('arrow1') arrow1!: ElementRef;
+  @ViewChild('arrow2') arrow2!: ElementRef;
+  @ViewChild('dropDownTitle') dropDownTitle!: ElementRef;
   firstAnswer!: boolean;
+  disableFirstNext: boolean = true;
   resultColor!: String;
   hideQ1: boolean = false;
-  hideQ2: boolean = false;
-  showQ2: boolean = false;
+  hideQ2Part1: boolean = false;
+  hideQ2Part2: boolean = false;
+  showQ2Part1: boolean = false;
+  showQ2Part2: boolean = false;
   fieldName: string = '';
   fieldDesc: string = '';
+  fieldLanguages!: string[];
   showConclusion: boolean = false;
-  lang1:string='';
-  lang2:string='';
-  lang3:string='';
-  hideLang2Place:boolean=false;
-  hideLang3Place:boolean=false;
-  constructor(private render: Renderer2, private http: HttpClient) {}
+  showSpinner: boolean = false;
+  langsOfBackend!: { [key: string]: [{ [key: number]: string }] };
+  langsOfRegion: [{ [key: number]: string }] = [{}];
+  hideLang2Place: boolean = false;
+  hideLang3Place: boolean = false;
+  selectedRegion: string = '';
+  constructor(
+    private render: Renderer2,
+    private coreService: CoreService,
+    private router: Router,
+    private passDataService: PassingData
+  ) {}
 
   ngOnInit(): void {}
   ngAfterViewInit() {
@@ -56,44 +70,77 @@ export class CoreComponent implements OnInit, AfterViewInit {
     this.render.addClass(this.stepTwo?.nativeElement, 'active');
     this.render.setAttribute(this.progress1?.nativeElement, 'value', '50');
     this.hideQ1 = true;
-    this.showQ2 = true;
+    this.showQ2Part1 = true;
   }
+
   advanceTo3() {
     this.render.removeClass(this.stepTwo?.nativeElement, 'active');
     this.render.addClass(this.stepTwo?.nativeElement, 'done');
     this.render.addClass(this.stepThree?.nativeElement, 'active');
     this.render.setAttribute(this.progress1?.nativeElement, 'value', '100');
-    this.hideQ2 = true;
-    this.showConclusion = true;
+    this.hideQ2Part1 = true;
+    this.hideQ2Part2 = true;
+    this.showSpinner = true;
+    setTimeout(() => {
+      this.showSpinner = false;
+      this.showConclusion = true;
+    }, 1600);
+
     // get field description
-    this.http
-      .get<{ [key: string]: string }>(
-        'https://technoid-2022-default-rtdb.firebaseio.com/description.json'
-      )
-      .subscribe((data) => {
-        this.fieldDesc = data[this.fieldName.toLowerCase()];
+
+    this.coreService
+      .getFieldDesc(this.fieldName.toLowerCase())
+      .subscribe((fd) => {
+        this.fieldDesc = fd;
       });
-      // get languages names
-      if(this.fieldName.toLowerCase()==='front-end'){
-        this.lang1='Html & css';
-        this.lang2="JavaScript";
-        this.hideLang3Place=true;
-        
-      }else if(this.fieldName.toLowerCase()==='cross-platform'){
-        this.lang1='Dart';
-        this.lang2="ReactNative";
-        this.hideLang3Place=true;
-      }
-      else if(this.fieldName.toLowerCase()==='android'){
-        this.lang1='Java';
-        this.lang2="Kotlin";
-        this.hideLang3Place=true;
-      }
-      else if(this.fieldName.toLowerCase()==='ios'){
-        this.lang1='Swift';
-        this.hideLang2Place=true
-        this.hideLang3Place=true;
-      }
-     
+
+    // get languages names
+
+    this.coreService
+      .getFieldLanguages(this.fieldName.toLowerCase())
+      .subscribe((fl) => {
+        if (this.fieldName.toLowerCase() === 'back-end') {
+          this.fieldLanguages = [];
+        } else {
+          this.fieldLanguages = fl.split(' ');
+        }
+      });
+    this.coreService.getBackendLangByRegion().subscribe((langsOfRegion) => {
+      this.langsOfBackend = langsOfRegion;
+    });
+  }
+  advanceTo2Part2() {
+    this.hideQ2Part1 = true;
+    this.showQ2Part2 = true;
+    this.render.setAttribute(this.arrow2.nativeElement, 'fill', '#878787');
+  }
+  evaluateFieldChoice() {
+    if (this.fieldName !== 'none') {
+      this.advanceTo3();
+    } else {
+      this.advanceTo2Part2();
+    }
+  }
+
+  getBackendLangs() {
+    this.dropDownTitle.nativeElement.innerHTML = this.selectedRegion;
+    this.langsOfRegion = this.langsOfBackend[this.selectedRegion];
+  }
+  goToCourses() {
+    this.passDataService.setFieldName(this.fieldName);
+    this.passDataService.setFirstAnswer(this.firstAnswer);
+    if (this.fieldName.toLowerCase() === 'back-end') {
+      this.passDataService.setChoosenRegion(this.selectedRegion);
+      this.passDataService.setLangsOfRegion(this.langsOfRegion);
+    } else {
+      this.passDataService.setFieldLangs(this.fieldLanguages);
+    }
+
+   
+
+    this.router.navigate(['courses']);
+  }
+  reload(){
+    window.location.reload();
   }
 }
