@@ -1,17 +1,15 @@
 import {
-  AfterContentInit,
   AfterViewInit,
   Component,
   ElementRef,
   OnInit,
   Renderer2,
   ViewChild,
-  ViewChildren,
 } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { CoreService } from './core.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { PassingData } from '../shared/passingData.service';
+import { QuestionsForm } from './QuestionsForm.model';
 
 @Component({
   selector: 'app-core',
@@ -42,8 +40,6 @@ export class CoreComponent implements OnInit, AfterViewInit {
   showSpinner: boolean = false;
   langsOfBackend!: { [key: string]: [{ [key: number]: string }] };
   langsOfRegion: [{ [key: number]: string }] = [{}];
-  hideLang2Place: boolean = false;
-  hideLang3Place: boolean = false;
   selectedRegion: string = '';
   constructor(
     private render: Renderer2,
@@ -54,7 +50,13 @@ export class CoreComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {}
   ngAfterViewInit() {
-    this.render.addClass(this.stepOne?.nativeElement, 'active');
+    setTimeout(() => {
+      if (!!localStorage.getItem('questionsForm')) {
+        this.getQuestionsFromLocal();
+      } else {
+        this.render.addClass(this.stepOne?.nativeElement, 'active');
+      }
+    }, 5);
   }
   advanceTo2() {
     this.firstAnswer
@@ -73,14 +75,15 @@ export class CoreComponent implements OnInit, AfterViewInit {
     this.showQ2Part1 = true;
   }
 
-  advanceTo3() {
+  advanceTo3(savedData?: boolean) {
     this.render.removeClass(this.stepTwo?.nativeElement, 'active');
     this.render.addClass(this.stepTwo?.nativeElement, 'done');
     this.render.addClass(this.stepThree?.nativeElement, 'active');
     this.render.setAttribute(this.progress1?.nativeElement, 'value', '100');
     this.hideQ2Part1 = true;
     this.hideQ2Part2 = true;
-    this.showSpinner = true;
+    savedData ? (this.showSpinner = false) : (this.showSpinner = true);
+
     setTimeout(() => {
       this.showSpinner = false;
       this.showConclusion = true;
@@ -114,9 +117,9 @@ export class CoreComponent implements OnInit, AfterViewInit {
     this.showQ2Part2 = true;
     this.render.setAttribute(this.arrow2.nativeElement, 'fill', '#878787');
   }
-  evaluateFieldChoice() {
+  evaluateFieldChoice(savedData?: boolean) {
     if (this.fieldName !== 'none') {
-      this.advanceTo3();
+      this.advanceTo3(savedData);
     } else {
       this.advanceTo2Part2();
     }
@@ -136,11 +139,42 @@ export class CoreComponent implements OnInit, AfterViewInit {
       this.passDataService.setFieldLangs(this.fieldLanguages);
     }
 
-   
-
     this.router.navigate(['courses']);
+    // this.saveQuestions();
   }
-  reload(){
+  resetQuestions() {
+    localStorage.removeItem('questionsForm');
+  }
+  reload() {
     window.location.reload();
+  }
+  saveQuestions() {
+    let questionsForm = new QuestionsForm(
+      this.firstAnswer,
+      this.fieldName,
+      this.fieldDesc,
+      this.fieldLanguages,
+      !this.hideQ2Part2
+    );
+    localStorage.setItem('questionsForm', JSON.stringify(questionsForm));
+  }
+  getQuestionsFromLocal() {
+    const loadedQuestionsData: {
+      answerOne: boolean;
+      fieldName: string;
+      fieldDesc: string;
+      fieldLangs: string[];
+      isq2part2: boolean;
+    } = JSON.parse(localStorage.getItem('questionsForm') || '{}');
+    this.firstAnswer = loadedQuestionsData.answerOne;
+    this.fieldName = loadedQuestionsData.fieldName;
+    this.fieldDesc = loadedQuestionsData.fieldDesc;
+    this.fieldLanguages = loadedQuestionsData.fieldLangs;
+    this.hideQ1 = true;
+    this.hideQ2Part1 = true;
+    this.hideQ2Part2 = true;
+    this.showConclusion = true;
+    this.advanceTo2();
+    this.evaluateFieldChoice(true);
   }
 }

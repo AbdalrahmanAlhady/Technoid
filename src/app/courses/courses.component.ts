@@ -32,8 +32,17 @@ export class CoursesComponent implements OnInit {
       this.showContent = true;
     }, 1600);
 
-    this.fieldName = this.passDataService.getFieldName();
+    // if (!!localStorage.getItem('questionsForm')) {
+
+    //   this.getSavedCoursesData();
+    //   console.log(this.fieldLangs);
+      
+    // }else{
+      this.fieldName = this.passDataService.getFieldName();
     this.firstAnswer = this.passDataService.getFirstAnswer();
+    // }
+
+    
 
     this.setBasicCoursesLinks();
     if (this.fieldName.toLowerCase() === 'back-end') {
@@ -110,5 +119,16 @@ export class CoursesComponent implements OnInit {
     this.coursesService.getDBCourseLink().subscribe((links)=>{
        this.dbCoursesLinks = links; 
     })
+  }
+  getSavedCoursesData(){
+    const loadedQuestionsData: {
+      answerOne: boolean;
+      fieldName: string;
+      fieldDesc: string;
+      fieldLangs: string[];
+      isq2part2: boolean;
+    } = JSON.parse(localStorage.getItem('questionsForm') || '{}');
+    this.firstAnswer = loadedQuestionsData.answerOne;
+    this.fieldName = loadedQuestionsData.fieldName;
   }
 }

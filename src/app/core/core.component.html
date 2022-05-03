@@ -582,6 +582,20 @@
               </ul>
             </div>
           </div>
+          <div class="reset-save">
+            <span style="color: #28a745">Save or reset data? </span>
+            <div class="reset-save-buttons">
+              <button
+                class="btn btn-danger reset-btn"
+                (click)="resetQuestions();reload()"
+              >
+                Reset
+              </button>
+              <button class="btn btn-primary" (click)="saveQuestions()">
+                save
+              </button>
+            </div>
+          </div>
           <div
             class="go-to-courses"
             *ngIf="
@@ -594,9 +608,6 @@
             >
             <button class="btn btn-success" (click)="goToCourses()">
               Go to courses
-            </button>
-            <button class="btn btn-primary" (click)="reload()">
-              Reset
             </button>
           </div>
         </div>

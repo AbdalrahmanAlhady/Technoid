@@ -4,6 +4,8 @@ import {catchError, tap} from 'rxjs/operators';
 import {BehaviorSubject, throwError} from 'rxjs';
 import {Router} from '@angular/router';
 import { User } from './User.model';
+import { PassingData } from '../shared/passingData.service';
+import { CoreComponent } from '../core/core.component';
 
 export interface AuthResponseData {
     kind: string,
@@ -22,7 +24,7 @@ export interface AuthResponseData {
    
     user = new BehaviorSubject<User|null>(null);
   
-    constructor(private http: HttpClient, private  router: Router) {
+    constructor(private http: HttpClient, private  router: Router,private passDataService: PassingData) {
     }
   
     signUp(email: string, pass: string) {
@@ -101,6 +103,7 @@ export interface AuthResponseData {
       this.user.next(null);
       this.router.navigate(['/auth']);
       localStorage.removeItem('userData');
+      localStorage.removeItem('questionsForm');
       if (this.tokenExpirationTimer) {
         clearTimeout(this.tokenExpirationTimer);
       }

@@ -290,12 +290,12 @@ li {
   margin-bottom: 15px;
 }
 
-.go-to-courses {
+.go-to-courses,.reset-save {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 5px;
 }
-
 /* trial */
 
 .form-check-input.box {
