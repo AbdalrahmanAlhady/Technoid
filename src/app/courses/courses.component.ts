@@ -38,22 +38,12 @@ export class CoursesComponent implements OnInit {
       next: (isDataSaved: boolean) => {
         if (isDataSaved) {
           this.getSavedCoursesData();
-          setTimeout(() => {
-            console.log(this.loadedQuestionsData);
-
-            console.log(this.fieldLangs);
-            console.log(this.fieldName);
-            console.log(this.firstAnswer);
-          }, 1500);
         } else {
-          console.log('eles');
-
           this.fieldName = this.passDataService.getFieldName();
           this.firstAnswer = this.passDataService.getFirstAnswer();
         }
       },
       error: (error) => {
-        console.log(error);
       },
     });
 

@@ -63,7 +63,6 @@ export class CoreComponent implements OnInit, AfterViewInit {
         }
       },
       error: (error) => {
-        console.log(error);
       },
     });
   }

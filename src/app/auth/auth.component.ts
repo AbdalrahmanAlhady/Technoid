@@ -51,7 +51,6 @@ export class AuthComponent implements OnInit {
         setTimeout(() => {
           this.showSpinner = false;
           this.error = errorMessage;
-          console.log(errorMessage);
         }, 1600);
       },
     });
@@ -60,7 +59,7 @@ export class AuthComponent implements OnInit {
   sendRPEmail(email: string) {
     this.authService.sendResetPasswordEmail(email).subscribe({
       next: (value) => {
-        console.log(value);
+
       },
     });
   }

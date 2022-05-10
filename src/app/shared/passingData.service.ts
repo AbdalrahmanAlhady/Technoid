@@ -87,11 +87,10 @@ export class PassingData {
       )
       .subscribe({
         next: (response) => {
-          console.log(response);
-          console.log(this.userID);
+
         },
         error: (error) => {
-          console.log(error.message);
+
         },
       });
   }
