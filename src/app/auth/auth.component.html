@@ -106,10 +106,7 @@
     </div>
     <div class="col-md-20 fcol" *ngIf="isResettingPassword">
       <p class="RP-title">Reset your password</p>
-      <!-- <p class="RP-action">
-        Technoid has sent you an email with a code to verify resetting password
-        request
-      </p> -->
+ 
       <hr>
       <div>
         <form class="RP-form">
@@ -118,6 +115,14 @@
             <input id="mail" type="email" class="form-control" #RPEmail/>
           </div>
           <button class="btn btn-primary RP-btn1" (click)="sendRPEmail(RPEmail.value)">Send Verification</button>
+          <br>
+          <br>
+          <div class="alert alert-primary" style="width: fit-content;" role="alert" *ngIf="emailSent">
+            If the inserted email is correct you'll find an email from Technoid
+          </div>
+          <div class="alert alert-primary" style="width: fit-content;" role="alert" *ngIf="emailSent">
+            Redirecting You To SignIn ....
+          </div>
         </form>
       </div>
     </div>
