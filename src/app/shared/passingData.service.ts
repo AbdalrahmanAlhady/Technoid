@@ -1,15 +1,27 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, map } from 'rxjs';
+import { User } from '../auth/User.model';
+import { QuestionsForm, QuestionsFormType } from '../core/QuestionsForm.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PassingData {
   fieldName: string = '';
+  fieldDesc: string = '';
   fieldLangs!: string[];
-  firstAnswer!: boolean; 
-  choosenRegion:string ='';
+  firstAnswer!: boolean;
+  choosenRegion: string = '';
   langsOfRegion: [{ [key: number]: string }] = [{}];
-  constructor() {}
+  isQ2Part2Used: boolean = false;
+  userData: User = JSON.parse(localStorage.getItem('userData') || '{}');
+  userID: string = this.userData.id;
+  constructor(private http: HttpClient) {
+    this.userID = JSON.parse(localStorage.getItem('userData') || '{}').id;
+
+    this.getQuestionData(this.userID);
+  }
 
   setFieldName(name: string) {
     this.fieldName = name;
@@ -17,28 +29,99 @@ export class PassingData {
   getFieldName(): string {
     return this.fieldName;
   }
+  setFieldDesc(desc: string) {
+    this.fieldDesc = desc;
+  }
+  getFieldDesc(): string {
+    return this.fieldDesc;
+  }
   setFieldLangs(langs: string[]) {
     this.fieldLangs = langs;
   }
-  getFieldLangs():string[]{
+  getFieldLangs(): string[] {
     return this.fieldLangs;
   }
   setFirstAnswer(answer: boolean) {
-    this.firstAnswer =answer;
+    this.firstAnswer = answer;
   }
   getFirstAnswer(): boolean {
     return this.firstAnswer;
   }
-  setChoosenRegion(region:string) {
-    this.choosenRegion =region;
+  setChoosenRegion(region: string) {
+    this.choosenRegion = region;
   }
   getChoosenRegion(): string {
     return this.choosenRegion;
   }
-  setLangsOfRegion(langsOfRegion:[{ [key: number]: string }]) {
-    this.langsOfRegion =langsOfRegion;
+  setLangsOfRegion(langsOfRegion: [{ [key: number]: string }]) {
+    this.langsOfRegion = langsOfRegion;
   }
   getLangsOfRegion(): [{ [key: number]: string }] {
     return this.langsOfRegion;
+  }
+
+  setIsQ2Part2Used(value: boolean) {
+    this.isQ2Part2Used = value;
+  }
+  getIsQ2Part2Used(): boolean {
+    return this.isQ2Part2Used;
+  }
+
+  saveQuestions() {
+    const questionsForm = new QuestionsForm(
+      this.firstAnswer,
+      this.fieldName,
+      this.fieldDesc,
+      this.fieldLangs,
+      this.langsOfRegion,
+      this.isQ2Part2Used,
+      this.choosenRegion
+    );
+
+    this.http
+      .put<QuestionsForm>(
+        'https://technoid-2022-default-rtdb.firebaseio.com/questionsData/' +
+          this.userID +
+          '.json',
+        questionsForm
+      )
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          console.log(this.userID);
+        },
+        error: (error) => {
+          console.log(error.message);
+        },
+      });
+  }
+  getQuestionData(userId: string) {
+    return this.http
+      .get<QuestionsFormType>(
+        'https://technoid-2022-default-rtdb.firebaseio.com/questionsData.json'
+      )
+      .pipe(
+        map((questionsData) => {
+          return questionsData[userId];
+        })
+      );
+  }
+  checkIfDataSaved(userId: string) {
+    return this.http
+      .get<QuestionsFormType>(
+        'https://technoid-2022-default-rtdb.firebaseio.com/questionsData.json'
+      )
+      .pipe(
+        map((questionsData) => {
+          return !!questionsData[userId];
+        })
+      );
+  }
+  deleteQuestionData(userId: string) {
+    return this.http.delete(
+      'https://technoid-2022-default-rtdb.firebaseio.com/questionsData/' +
+        userId +
+        '.json'
+    );
   }
 }

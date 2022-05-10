@@ -11,20 +11,24 @@ import { AuthResponseData, AuthService } from './auth.service';
 })
 export class AuthComponent implements OnInit {
   isLoginMode = true;
- showSpinner = false;
+  showSpinner = false;
   error: string = null!;
+  isResettingPassword: boolean = false;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
-  onSwitchMode(method:number): void {
-    switch(method){
-      case 1:this.isLoginMode = false;break;
-      case 2 :this.isLoginMode = true;break;
+  onSwitchMode(method: number): void {
+    switch (method) {
+      case 1:
+        this.isLoginMode = false;
+        break;
+      case 2:
+        this.isLoginMode = true;
+        break;
     }
-    // this.isLoginMode = !this.isLoginMode;
   }
 
-  onSubmit(form: NgForm): void {  
+  onSubmit(form: NgForm): void {
     this.error = '';
     this.showSpinner = true;
     const email = form.value.email;
@@ -33,36 +37,32 @@ export class AuthComponent implements OnInit {
 
     if (this.isLoginMode) {
       authObservable = this.authService.signIn(email, password);
-    } else if (!this.isLoginMode) { 
-    authObservable = this.authService.signUp(email, password);
-  }
+    } else if (!this.isLoginMode) {
+      authObservable = this.authService.signUp(email, password);
+    }
     authObservable.subscribe({
       next: (data) => {
         setTimeout(() => {
-          this.showSpinner=false;
+          this.showSpinner = false;
           this.router.navigate(['/']);
         }, 1600);
-        
-        
-
       },
       error: (errorMessage) => {
         setTimeout(() => {
-          this.showSpinner=false;
+          this.showSpinner = false;
           this.error = errorMessage;
+          console.log(errorMessage);
         }, 1600);
-
-        
       },
-      
     });
     form.reset();
   }
-  onHandelErrorMessage() {
-    this.error = null!;
+  sendRPEmail(email: string) {
+    this.authService.sendResetPasswordEmail(email).subscribe({
+      next: (value) => {
+        console.log(value);
+      },
+    });
   }
-}
-function data(data: any) {
-  throw new Error('Function not implemented.');
-}
 
+}

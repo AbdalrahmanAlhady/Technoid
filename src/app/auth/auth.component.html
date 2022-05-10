@@ -1,10 +1,11 @@
 <div class="container">
   <app-loader-spinner *ngIf="showSpinner" [centerIt]="1"></app-loader-spinner>
   <div class="row justify-content-md-center" *ngIf="!showSpinner">
-    <div class="col-md-20">
+    <div class="col-md-20" *ngIf="!isResettingPassword">
       <div class="form-container">
         <div class="form-title" *ngIf="!isLoginMode">Create Account</div>
         <div class="form-title" *ngIf="isLoginMode">Log in</div>
+        <hr class="hr-1">
         <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
           <div class="mb-3 form-group" *ngIf="!isLoginMode">
             <label for="name" class="form-label">Name</label>
@@ -61,6 +62,15 @@
             >login</strong
           ></span
         >
+        <a
+          class="switch switch-link"
+          *ngIf="isLoginMode"
+          (click)="isResettingPassword = true"
+          >Forgot Password?</a
+        >
+        <div class="alert alert-danger" role="alert" *ngIf="error">
+          {{ error }}
+        </div>
       </div>
       <div class="app-desc">
         <div class="top">
@@ -92,6 +102,28 @@
         <div class="bottom">
           <span>Helps You to start Learing and developing</span>
         </div>
+      </div>
+    </div>
+    <div class="col-md-20 fcol" *ngIf="isResettingPassword">
+      <p class="RP-title">Reset your password</p>
+      <!-- <p class="RP-action">
+        Technoid has sent you an email with a code to verify resetting password
+        request
+      </p> -->
+      <hr>
+      <div>
+        <form class="RP-form">
+          <div class="mb-3 form-group">
+            <label for="mail" class="form-label">Enter your email</label>
+            <input id="mail" type="email" class="form-control" #RPEmail/>
+          </div>
+          <button class="btn btn-primary RP-btn1" (click)="sendRPEmail(RPEmail.value)">Send Verification</button>
+          <!-- <div class="mb-3 form-group">
+            <label for="code" class="form-label">Enter Verification code</label>
+            <input id="code" type="password" class="form-control" />
+          </div>
+          <button class="btn btn-primary">Next</button> -->
+        </form>
       </div>
     </div>
   </div>

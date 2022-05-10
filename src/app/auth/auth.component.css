@@ -81,4 +81,35 @@ label {
 .bottom{
     width: 220px;
 }
-
+.alert{
+    width: 250px;
+}
+.fcol{
+    flex-direction: column;
+}
+.RP-title{
+    color: #14538E;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+hr{
+    color: azure;
+    width: 500px;
+    margin-top: 0;
+}
+.hr-1{
+    color: azure;
+    width: 200px;
+    margin-top: 0;
+}
+.RP-btn1{
+    width: fit-content;
+    margin-left: auto;
+}
+.RP-form{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    align-items: initial;
+}

@@ -1,25 +1,22 @@
+export interface QuestionsFormType {
+  answerOne: boolean;
+  fieldName: string;
+  fieldDesc: string;
+  fieldLangs?: string[];
+  langsOfRegion?:[{ [key: number]: string }];
+  isq2part2?: boolean;
+  region?:string;
+}
+
 export class QuestionsForm {
   constructor(
     public answerOne: boolean,
     public fieldName: string,
     public fieldDesc: string,
-    public fieldLangs: string[],
-    public isq2part2:boolean,
-    
+    public fieldLangs?: string[],
+    public langsOfRegion?:[{ [key: number]: string }],
+    public isq2part2?: boolean,
+    public region?:string
   ) {}
 
-  setQuestionForm(
-    answerOne: boolean,
-    fieldName: string,
-    fieldDesc: string,
-    fieldLangs: string[],
-    isq2part2:boolean,
-  ) {
-    this.answerOne = answerOne;
-    this.fieldName = fieldName;
-    this.fieldDesc = fieldDesc;
-    this.fieldLangs = fieldLangs;
-    this.isq2part2 = isq2part2;
-
-  }
 }

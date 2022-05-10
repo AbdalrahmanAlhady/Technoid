@@ -1,614 +1,641 @@
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-md-20">
-      <div class="doing-now-wrapper">
-        <svg
-          *ngIf="!showConclusion"
-          width="40"
-          height="40"
-          viewBox="0 0 296 296"
-          fill="white"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clip-path="url(#clip0_180_12)">
-            <path
-              d="M277.462 0.09L249.781 20.81L221.943 85.715H199.557L190.767 66.667H196.51C207.015 66.667 215.558 58.215 215.558 47.71V28.571H225.082V0H196.51V28.571H206.034V47.71C206.034 52.958 201.763 57.143 196.51 57.143H186.372L174.2 30.81L188.781 23.543L141.038 3.095L129.814 42.376C129.509 19.005 110.428 0.086 86.985 0.086C63.352 0.086 44.128 19.31 44.128 42.943C44.128 57.224 51.361 70.619 63.176 78.538V85.714H51.643L50.9 89.619C48.586 101.624 48.371 113.962 50.262 126.267L17.776 184.172L53.652 192.367V252.381H101.271V295.238H215.557V228.881C248.89 205.3 267.928 167.386 267.9 126.938L267.91 109.567C267.91 103.019 267.305 96.291 266.086 89.662L265.381 85.714H256.033L277.462 34.376V0.09ZM206.033 19.138V9.614H215.557V19.138H206.033V19.138ZM189.067 85.714H171.005L162.348 66.666H180.277L189.067 85.714ZM147.219 16.119L166.148 24.229L161.681 26.419L175.881 57.143H158.019L146.414 31.672L142.152 33.824L147.219 16.119ZM160.543 85.715H139.367V76.282C139.367 71.03 143.638 66.668 148.891 66.668H151.886V66.667L160.543 85.715ZM141.843 44.652L147.619 57.362C137.714 58.029 129.843 66.21 129.843 76.281V85.714H110.795V78.538C120.324 72.152 126.79 62.186 128.971 51.086L141.843 44.652ZM53.653 42.948C53.653 24.572 68.61 9.615 86.986 9.615C105.362 9.615 120.319 24.572 120.319 42.948C120.319 54.777 113.929 65.829 103.648 71.786L101.272 73.157V85.714H91.748V56.352C97.277 54.381 101.272 49.142 101.272 42.942C101.272 35.066 94.862 28.656 86.986 28.656C79.11 28.656 72.7 35.067 72.7 42.943C72.7 49.143 76.695 54.381 82.224 56.353V85.715H72.7V73.157L70.324 71.781C60.043 65.824 53.653 54.776 53.653 42.948ZM86.986 47.71C84.357 47.71 82.224 45.571 82.224 42.948C82.224 40.319 84.357 38.186 86.986 38.186C89.615 38.186 91.748 40.319 91.748 42.948C91.748 45.577 89.615 47.71 86.986 47.71ZM257.366 95.239C258.057 100 258.405 104.829 258.405 109.524L258.415 126.929C258.444 165.077 239.62 200.8 208.129 222.481L206.034 223.91V285.715H110.796V242.858H63.176V184.772L32.314 177.729L60.19 128.029L59.919 126.329C58.148 115.91 58.048 104.762 59.586 95.239H63.176H110.795H257.366V95.239ZM245.714 85.714H232.3L256.038 30.371L266.595 35.628L245.714 85.714ZM267.938 25.714L262.671 23.081L267.938 19.138V25.714Z"
-              fill="#000000"
-            />
-            <path
-              d="M96.51 123.81C88.634 123.81 82.224 119.048 82.224 109.524H72.7C72.7 123.81 83.381 133.334 96.51 133.334C109.639 133.334 120.32 123.81 120.32 109.524H110.796C110.795 119.048 104.386 123.81 96.51 123.81Z"
-              fill="#000000"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_180_12">
-              <rect width="295.238" height="295.238" fill="white" />
-            </clipPath>
-          </defs>
-        </svg>
-        <svg
-          *ngIf="showConclusion"
-          width="40"
-          height="40"
-          viewBox="0 0 296 296"
-          fill="white"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clip-path="url(#clip0_180_12)">
-            <path
-              d="M277.462 0.09L249.781 20.81L221.943 85.715H199.557L190.767 66.667H196.51C207.015 66.667 215.558 58.215 215.558 47.71V28.571H225.082V0H196.51V28.571H206.034V47.71C206.034 52.958 201.763 57.143 196.51 57.143H186.372L174.2 30.81L188.781 23.543L141.038 3.095L129.814 42.376C129.509 19.005 110.428 0.086 86.985 0.086C63.352 0.086 44.128 19.31 44.128 42.943C44.128 57.224 51.361 70.619 63.176 78.538V85.714H51.643L50.9 89.619C48.586 101.624 48.371 113.962 50.262 126.267L17.776 184.172L53.652 192.367V252.381H101.271V295.238H215.557V228.881C248.89 205.3 267.928 167.386 267.9 126.938L267.91 109.567C267.91 103.019 267.305 96.291 266.086 89.662L265.381 85.714H256.033L277.462 34.376V0.09ZM206.033 19.138V9.614H215.557V19.138H206.033V19.138ZM189.067 85.714H171.005L162.348 66.666H180.277L189.067 85.714ZM147.219 16.119L166.148 24.229L161.681 26.419L175.881 57.143H158.019L146.414 31.672L142.152 33.824L147.219 16.119ZM160.543 85.715H139.367V76.282C139.367 71.03 143.638 66.668 148.891 66.668H151.886V66.667L160.543 85.715ZM141.843 44.652L147.619 57.362C137.714 58.029 129.843 66.21 129.843 76.281V85.714H110.795V78.538C120.324 72.152 126.79 62.186 128.971 51.086L141.843 44.652ZM53.653 42.948C53.653 24.572 68.61 9.615 86.986 9.615C105.362 9.615 120.319 24.572 120.319 42.948C120.319 54.777 113.929 65.829 103.648 71.786L101.272 73.157V85.714H91.748V56.352C97.277 54.381 101.272 49.142 101.272 42.942C101.272 35.066 94.862 28.656 86.986 28.656C79.11 28.656 72.7 35.067 72.7 42.943C72.7 49.143 76.695 54.381 82.224 56.353V85.715H72.7V73.157L70.324 71.781C60.043 65.824 53.653 54.776 53.653 42.948ZM86.986 47.71C84.357 47.71 82.224 45.571 82.224 42.948C82.224 40.319 84.357 38.186 86.986 38.186C89.615 38.186 91.748 40.319 91.748 42.948C91.748 45.577 89.615 47.71 86.986 47.71ZM257.366 95.239C258.057 100 258.405 104.829 258.405 109.524L258.415 126.929C258.444 165.077 239.62 200.8 208.129 222.481L206.034 223.91V285.715H110.796V242.858H63.176V184.772L32.314 177.729L60.19 128.029L59.919 126.329C58.148 115.91 58.048 104.762 59.586 95.239H63.176H110.795H257.366V95.239ZM245.714 85.714H232.3L256.038 30.371L266.595 35.628L245.714 85.714ZM267.938 25.714L262.671 23.081L267.938 19.138V25.714Z"
-              fill="#25C03E"
-            />
-            <path
-              d="M96.51 123.81C88.634 123.81 82.224 119.048 82.224 109.524H72.7C72.7 123.81 83.381 133.334 96.51 133.334C109.639 133.334 120.32 123.81 120.32 109.524H110.796C110.795 119.048 104.386 123.81 96.51 123.81Z"
-              fill="#25C03E"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_180_12">
-              <rect width="295.238" height="295.238" fill="white" />
-            </clipPath>
-          </defs>
-        </svg>
-        <h6 class="doing-now-1" *ngIf="!showConclusion">
-          Technoid will ask you some question that will help to put you on the
-          right path.
-        </h6>
-        <h6 class="doing-now-2" *ngIf="showConclusion">
-          Technoid have arrived to a recommendation
-        </h6>
-      </div>
-      <!-- start of Stepper bar -->
-      <section>
-        <div class="container">
-          <div class="accordion" id="accordionExample">
-            <div class="steps">
-              <progress
-                id="progress1"
-                value="0"
-                max="100"
-                #progress1
-              ></progress>
-              <div class="step-item">
-                <button
-                  class="step-button text-center"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                  #stepOne
-                >
-                  1
-                </button>
-                <div class="step-title">Phase 1</div>
-              </div>
-              <div class="step-item">
-                <button
-                  class="step-button text-center collapsed"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="collapseTwo"
-                  #stepTwo
-                >
-                  2
-                </button>
-                <div class="step-title">Phase 2</div>
-              </div>
-              <div class="step-item">
-                <button
-                  class="step-button text-center collapsed"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#collapseThree"
-                  aria-expanded="false"
-                  aria-controls="collapseThree"
-                  #stepThree
-                >
-                  3
-                </button>
-                <div class="step-title">Conclusion</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- End of stepper bar -->
-
-      <br />
-      <!-- first question -->
-      <div class="big-container">
-        <svg
-          width="30"
-          height="40"
-          viewBox="0 0 17 27"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4.83105 4.03418L4.08398 5.24707L9.28027 13.5L4.08398 21.7529L4.83105 22.9658L10.791 13.5L4.83105 4.03418ZM8.5498 4.03418L7.80273 5.24707L12.999 13.5L7.80273 21.7529L8.5498 22.9658L14.5098 13.5L8.5498 4.03418Z"
-            fill="#14538E"
-            #arrow1
-          />
-        </svg>
-        <div class="Q&A-container" [hidden]="hideQ1">
-          <label class="question">
-            Are you an university student or graduate in the Cs Field ?
-          </label>
-          <div class="small-container">
-            <div class="answer-container">
-              <div class="form-check form-check-inline yes">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio1"
-                  value="true"
-                  (change)="firstAnswer = true; disableFirstNext = false"
-                />
-                <label class="form-check-label" for="inlineRadio1">Yes</label>
-              </div>
-              <div class="form-check form-check-inline no">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio2"
-                  value="false"
-                  (change)="firstAnswer = false; disableFirstNext = false"
-                />
-                <label class="form-check-label" for="inlineRadio2">No</label>
-              </div>
-              <button
-                class="btn btn-primary next-btn"
-                [disabled]="disableFirstNext"
-                (click)="advanceTo2()"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End of the first question -->
-      <br />
-      <!-- Second question -->
-      <div class="big-container" *ngIf="showQ2Part1">
-        <svg
-          width="30"
-          height="40"
-          viewBox="0 0 17 27"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4.83105 4.03418L4.08398 5.24707L9.28027 13.5L4.08398 21.7529L4.83105 22.9658L10.791 13.5L4.83105 4.03418ZM8.5498 4.03418L7.80273 5.24707L12.999 13.5L7.80273 21.7529L8.5498 22.9658L14.5098 13.5L8.5498 4.03418Z"
-            fill="#14538E"
-            #arrow2
-          />
-        </svg>
-        <div class="Q&A-container" [hidden]="hideQ2Part1">
-          <label class="question"> What field are u interested in ? </label>
-          <div class="small-container">
-            <div class="answer-container">
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="field"
-                  id="f-e"
-                  value="true"
-                  (change)="fieldName = 'Front-End'"
-                />
-                <label class="form-check-label" for="f-e">Front-End</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="field"
-                  id="b-e"
-                  value="true"
-                  (change)="fieldName = 'Back-End'"
-                />
-                <label class="form-check-label" for="b-e">Back-End</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="field"
-                  id="a"
-                  value="true"
-                  (change)="fieldName = 'Android'"
-                />
-                <label class="form-check-label" for="a">Android</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="field"
-                  id="ios"
-                  value="true"
-                  (change)="fieldName = 'iOS'"
-                />
-                <label class="form-check-label" for="ios">IOS</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="field"
-                  id="c-p"
-                  value="false"
-                  (change)="fieldName = 'Cross-Platform'"
-                />
-                <label class="form-check-label" for="c-p">Cross-Platform</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="field"
-                  id="none"
-                  value="true"
-                  (change)="fieldName = 'none'"
-                />
-                <label class="form-check-label" for="none">Don't Know</label>
-              </div>
-              <button
-                class="btn btn-primary next-btn"
-                [disabled]="!fieldName"
-                (click)="evaluateFieldChoice()"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
-      <div class="big-container" *ngIf="showQ2Part2">
-        <svg
-          width="30"
-          height="40"
-          viewBox="0 0 17 27"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4.83105 4.03418L4.08398 5.24707L9.28027 13.5L4.08398 21.7529L4.83105 22.9658L10.791 13.5L4.83105 4.03418ZM8.5498 4.03418L7.80273 5.24707L12.999 13.5L7.80273 21.7529L8.5498 22.9658L14.5098 13.5L8.5498 4.03418Z"
-            fill="#14538E"
-          />
-        </svg>
-        <div class="Q&A-container" [hidden]="hideQ2Part2">
-          <label class="question"> Are u interested in : </label>
-          <div class="small-container">
-            <div class="answer-container">
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input box"
-                  type="radio"
-                  name="field"
-                  id="f-e2"
-                  value="true"
-                  (change)="fieldName = 'Front-End'"
-                />
-                <label class="form-check-label box" for="f-e2"
-                  >Design user interface, color, screens and develop user side
-                  of website</label
-                >
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input box"
-                  type="radio"
-                  name="field"
-                  id="b-e2"
-                  value="true"
-                  (change)="fieldName = 'Back-End'"
-                />
-                <label class="form-check-label box" for="b-e2"
-                  >Developing databases and the code that handle database and
-                  process it and design business logic of your website</label
-                >
-              </div>
-
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="field"
-                  id="a2"
-                  value="true"
-                  (change)="fieldName = 'Android'"
-                />
-                <label class="form-check-label box" for="a2"
-                  >Making apps for android users</label
-                >
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="field"
-                  id="ios2"
-                  value="true"
-                  (change)="fieldName = 'iOS'"
-                />
-                <label class="form-check-label box" for="ios2"
-                  >Making apps for iOS users</label
-                >
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input box"
-                  type="radio"
-                  name="field"
-                  id="c-p2"
-                  value="false"
-                  (change)="fieldName = 'Cross-Platform'"
-                />
-                <label class="form-check-label box" for="c-p2"
-                  >Making apps that work on multiple platforms with one code
-                  rather than write code for each platform alone</label
-                >
-              </div>
-              <button
-                class="btn btn-primary next-btn"
-                [disabled]="fieldName === 'none'"
-                (click)="advanceTo3()"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End of Second question -->
-      <br />
-      <app-loader-spinner *ngIf="showSpinner"></app-loader-spinner>
-      <div class="conclusion-container" *ngIf="showConclusion">
-        <div class="upper-container">
+      <app-loader-spinner *ngIf="loadingData" [centerIt]="1"></app-loader-spinner>
+      <div class="loading-data" [style.visibility]="!loadingData?'unset':'hidden'">
+        <div class="doing-now-wrapper">
           <svg
-            width="50"
-            height="50"
-            viewBox="0 0 43 37"
-            fill="none"
+            *ngIf="!showConclusion"
+            width="40"
+            height="40"
+            viewBox="0 0 296 296"
+            fill="white"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clip-path="url(#clip0_16_21)">
+            <g clip-path="url(#clip0_180_12)">
               <path
-                d="M42.1898 0.00504533C42.1638 0.00389069 42.1378 0.00389069 42.1119 0.00504533C41.7215 0.0433958 41.4279 0.329415 41.4319 0.667477V2.67267C41.3037 2.68587 38.94 2.88413 37.5231 3.01032L37.628 4.56191L33.6952 4.76018L33.5994 3.34541C29.5239 3.65791 24.7362 3.96141 21.4955 3.96141C14.9472 3.96141 2.06428 2.72158 1.55907 2.67275V0.667648C1.56309 0.303194 1.22302 0.00504597 0.799564 0.00158206C0.770139 0.00133463 0.740713 0.00257227 0.711479 0.00521145C0.321089 0.043562 0.027505 0.329586 0.0315306 0.667648V36.2811C-0.00632949 36.644 0.30489 36.9647 0.726719 36.9973C1.14855 37.0299 1.52121 36.7621 1.55907 36.3992C1.56319 36.3598 1.56319 36.3204 1.55907 36.2811V16.5156C1.80827 16.5288 4.56219 16.6478 6.89361 16.7475L6.97747 15.3454L10.9132 15.5181L10.8293 16.9021C14.535 17.0374 18.5702 17.1598 21.4954 17.1598C28.1392 17.1598 40.7081 16.5508 41.4319 16.5156V36.2811C41.435 36.6469 41.7822 36.9414 42.2073 36.9386C42.6281 36.9361 42.9684 36.6432 42.9715 36.2811V0.667648C42.9766 0.303277 42.6374 0.0043021 42.2138 -6.90376e-05C42.2058 -0.000151512 42.1977 -0.000148411 42.1897 1.65375e-05L42.1898 0.00504533Z"
-                fill="#5A3392"
+                d="M277.462 0.09L249.781 20.81L221.943 85.715H199.557L190.767 66.667H196.51C207.015 66.667 215.558 58.215 215.558 47.71V28.571H225.082V0H196.51V28.571H206.034V47.71C206.034 52.958 201.763 57.143 196.51 57.143H186.372L174.2 30.81L188.781 23.543L141.038 3.095L129.814 42.376C129.509 19.005 110.428 0.086 86.985 0.086C63.352 0.086 44.128 19.31 44.128 42.943C44.128 57.224 51.361 70.619 63.176 78.538V85.714H51.643L50.9 89.619C48.586 101.624 48.371 113.962 50.262 126.267L17.776 184.172L53.652 192.367V252.381H101.271V295.238H215.557V228.881C248.89 205.3 267.928 167.386 267.9 126.938L267.91 109.567C267.91 103.019 267.305 96.291 266.086 89.662L265.381 85.714H256.033L277.462 34.376V0.09ZM206.033 19.138V9.614H215.557V19.138H206.033V19.138ZM189.067 85.714H171.005L162.348 66.666H180.277L189.067 85.714ZM147.219 16.119L166.148 24.229L161.681 26.419L175.881 57.143H158.019L146.414 31.672L142.152 33.824L147.219 16.119ZM160.543 85.715H139.367V76.282C139.367 71.03 143.638 66.668 148.891 66.668H151.886V66.667L160.543 85.715ZM141.843 44.652L147.619 57.362C137.714 58.029 129.843 66.21 129.843 76.281V85.714H110.795V78.538C120.324 72.152 126.79 62.186 128.971 51.086L141.843 44.652ZM53.653 42.948C53.653 24.572 68.61 9.615 86.986 9.615C105.362 9.615 120.319 24.572 120.319 42.948C120.319 54.777 113.929 65.829 103.648 71.786L101.272 73.157V85.714H91.748V56.352C97.277 54.381 101.272 49.142 101.272 42.942C101.272 35.066 94.862 28.656 86.986 28.656C79.11 28.656 72.7 35.067 72.7 42.943C72.7 49.143 76.695 54.381 82.224 56.353V85.715H72.7V73.157L70.324 71.781C60.043 65.824 53.653 54.776 53.653 42.948ZM86.986 47.71C84.357 47.71 82.224 45.571 82.224 42.948C82.224 40.319 84.357 38.186 86.986 38.186C89.615 38.186 91.748 40.319 91.748 42.948C91.748 45.577 89.615 47.71 86.986 47.71ZM257.366 95.239C258.057 100 258.405 104.829 258.405 109.524L258.415 126.929C258.444 165.077 239.62 200.8 208.129 222.481L206.034 223.91V285.715H110.796V242.858H63.176V184.772L32.314 177.729L60.19 128.029L59.919 126.329C58.148 115.91 58.048 104.762 59.586 95.239H63.176H110.795H257.366V95.239ZM245.714 85.714H232.3L256.038 30.371L266.595 35.628L245.714 85.714ZM267.938 25.714L262.671 23.081L267.938 19.138V25.714Z"
+                fill="#000000"
               />
               <path
-                d="M1.55907 3.99829C2.33899 4.07351 14.7983 5.28184 21.4955 5.28168C28.1876 5.28168 40.6332 4.07598 41.432 3.99829V15.194C40.8529 15.2243 28.0665 15.8411 21.4955 15.8411C14.9246 15.8411 2.13828 15.2222 1.55907 15.194C1.55907 15.194 1.55907 3.99829 1.55907 3.99829Z"
-                fill="#EE746C"
-              />
-              <path
-                d="M3.52396 4.58057V14.6734C3.96064 14.6945 11.9529 15.0735 18.069 15.2017L24.8862 5.6501C23.6684 5.70016 22.4986 5.73727 21.4955 5.73727C15.4578 5.73727 4.2271 4.64837 3.52396 4.58008V4.58057ZM39.4671 4.58057C39.1225 4.61356 36.2965 4.87971 32.8626 5.14758L25.8147 15.1863C31.7898 15.0399 39.0528 14.6932 39.4671 14.6734V4.58057ZM30.1877 5.34346C29.1472 5.41612 28.0986 5.48927 27.0577 5.54709L20.2554 15.2378C20.6423 15.2378 21.1445 15.2589 21.4954 15.2589C21.9583 15.2589 22.6076 15.2366 23.1309 15.2312L30.1877 5.34461V5.34346Z"
-                fill="#FB9761"
-              />
-              <path
-                d="M5.31862 6.60674C4.92402 6.64072 4.62458 6.92798 4.62804 7.26909V13.854C4.62823 14.2199 4.97309 14.5162 5.39818 14.516C5.82307 14.5159 6.16736 14.2196 6.16765 13.854V7.9218H8.4544C8.87642 7.95239 9.24736 7.68279 9.28282 7.31949C9.31828 6.95644 9.00495 6.63734 8.58293 6.60666C8.54019 6.60361 8.49715 6.60361 8.4544 6.60666H5.39779C5.37144 6.60559 5.34498 6.60558 5.31862 6.60674Z"
-                fill="#5A3392"
-              />
-              <path
-                d="M5.78273 9.8992C5.35755 9.89549 5.00952 10.1892 5.0053 10.555C5.00109 10.9208 5.34231 11.2202 5.76739 11.2239C5.77247 11.2239 5.77755 11.2239 5.78273 11.2239H6.91479C7.33998 11.2202 7.6812 10.9207 7.67689 10.555C7.67276 10.1943 7.33394 9.90275 6.91479 9.8992H5.78273Z"
-                fill="#5A3392"
-              />
-              <path
-                d="M19.1072 6.60668C18.7128 6.64569 18.418 6.93724 18.4279 7.27869V11.4771L15.2581 6.93781C15.0421 6.62433 14.5715 6.52091 14.2073 6.70697C13.9729 6.82664 13.8299 7.04446 13.8317 7.27902V13.8543C13.796 14.2173 14.1093 14.5366 14.5314 14.5673C14.9534 14.598 15.3244 14.3284 15.36 13.9653C15.3636 13.9284 15.3636 13.8912 15.36 13.8543V9.63629L18.5411 14.1951C18.7571 14.5085 19.2277 14.612 19.5919 14.4259C19.8263 14.3062 19.9693 14.0884 19.9675 13.8539V7.27861C19.9785 6.91423 19.6442 6.61122 19.2209 6.6019C19.1829 6.60107 19.1449 6.60264 19.1072 6.60668Z"
-                fill="#5A3392"
-              />
-              <path
-                d="M22.1751 6.60675C21.7807 6.64576 21.486 6.93731 21.4958 7.27875V13.854C21.496 14.2199 21.8409 14.5162 22.266 14.516C22.6909 14.5159 23.0351 14.2196 23.0354 13.854V7.27875C23.0465 6.91438 22.7121 6.61138 22.2888 6.60206C22.2508 6.60115 22.2128 6.60271 22.1751 6.60675Z"
-                fill="#5A3392"
-              />
-              <path
-                d="M32.9976 9.90906V11.2239H37.6052V9.90906H32.9976Z"
-                fill="#5A3392"
-              />
-              <path
-                d="M32.9071 6.60675C32.5126 6.64576 32.2179 6.93731 32.2278 7.27875V13.854C32.228 14.2199 32.5728 14.5162 32.9979 14.516C33.4228 14.5159 33.7671 14.2196 33.7674 13.854V7.27875C33.7784 6.91438 33.4441 6.61138 33.0207 6.60206C32.9828 6.60115 32.9448 6.60271 32.9071 6.60675Z"
-                fill="#5A3392"
-              />
-              <path
-                d="M37.5146 6.60665C37.1202 6.64567 36.8254 6.93722 36.8353 7.27866V13.8539C36.7997 14.217 37.1129 14.5362 37.5349 14.5669C37.9569 14.5977 38.328 14.3281 38.3635 13.9649C38.3672 13.9281 38.3672 13.8909 38.3635 13.8539V7.27866C38.3738 6.91429 38.0389 6.61177 37.6155 6.60295C37.5819 6.60229 37.5481 6.6036 37.5146 6.60665Z"
-                fill="#5A3392"
-              />
-              <path
-                d="M11.443 6.60665C11.0486 6.64567 10.7539 6.93722 10.7638 7.27866V13.8539C10.7281 14.217 11.0413 14.5362 11.4634 14.5669C11.8854 14.5977 12.2564 14.3281 12.292 13.9649C12.2956 13.9281 12.2956 13.8909 12.292 13.8539V7.27866C12.3022 6.91429 11.9673 6.61177 11.544 6.60295C11.5103 6.60229 11.4766 6.6036 11.443 6.60665Z"
-                fill="#5A3392"
-              />
-              <path
-                d="M26.8166 6.63608C25.4419 6.82759 24.4616 7.90635 24.5751 9.10049C24.6885 10.2947 25.8656 11.2269 27.2581 11.224H27.3149C27.3188 11.224 27.3227 11.224 27.3266 11.224C27.9339 11.2229 28.4205 11.609 28.47 12.1299C28.5192 12.6507 28.1071 13.1082 27.5077 13.1918C26.9083 13.2749 26.3502 12.9589 26.2058 12.4513C26.1417 12.0914 25.7506 11.8443 25.3323 11.8994C24.914 11.9547 24.6268 12.2912 24.6909 12.6512C24.6977 12.6892 24.7084 12.7267 24.7228 12.7631C25.0538 13.9267 26.3822 14.6887 27.7568 14.4968C29.1312 14.3048 30.1117 13.2168 29.9983 12.0227C29.8851 10.8312 28.7149 9.91014 27.3266 9.90882H27.2586C27.2547 9.90882 27.2509 9.90882 27.2469 9.90882C26.6396 9.90998 26.153 9.51368 26.1036 8.99319C26.0543 8.47245 26.4665 8.02478 27.0658 7.94115C27.6652 7.85802 28.2233 8.17423 28.3677 8.68153C28.4316 9.04153 28.8226 9.28861 29.241 9.23369C29.6593 9.17859 29.9466 8.84227 29.8827 8.48227C29.8759 8.44408 29.8652 8.40639 29.8508 8.36985C29.5197 7.20606 28.1913 6.44408 26.8168 6.63616L26.8166 6.63608Z"
-                fill="#5A3392"
+                d="M96.51 123.81C88.634 123.81 82.224 119.048 82.224 109.524H72.7C72.7 123.81 83.381 133.334 96.51 133.334C109.639 133.334 120.32 123.81 120.32 109.524H110.796C110.795 119.048 104.386 123.81 96.51 123.81Z"
+                fill="#000000"
               />
             </g>
             <defs>
-              <clipPath id="clip0_16_21">
-                <rect width="43" height="37" fill="white" />
+              <clipPath id="clip0_180_12">
+                <rect width="295.238" height="295.238" fill="white" />
               </clipPath>
             </defs>
           </svg>
-          <div class="about-field">
-            <h4 class="field-name">{{ fieldName }}</h4>
-            <p class="field-desc">
-              {{ fieldDesc }}
-            </p>
+          <svg
+            *ngIf="showConclusion"
+            width="40"
+            height="40"
+            viewBox="0 0 296 296"
+            fill="white"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_180_12)">
+              <path
+                d="M277.462 0.09L249.781 20.81L221.943 85.715H199.557L190.767 66.667H196.51C207.015 66.667 215.558 58.215 215.558 47.71V28.571H225.082V0H196.51V28.571H206.034V47.71C206.034 52.958 201.763 57.143 196.51 57.143H186.372L174.2 30.81L188.781 23.543L141.038 3.095L129.814 42.376C129.509 19.005 110.428 0.086 86.985 0.086C63.352 0.086 44.128 19.31 44.128 42.943C44.128 57.224 51.361 70.619 63.176 78.538V85.714H51.643L50.9 89.619C48.586 101.624 48.371 113.962 50.262 126.267L17.776 184.172L53.652 192.367V252.381H101.271V295.238H215.557V228.881C248.89 205.3 267.928 167.386 267.9 126.938L267.91 109.567C267.91 103.019 267.305 96.291 266.086 89.662L265.381 85.714H256.033L277.462 34.376V0.09ZM206.033 19.138V9.614H215.557V19.138H206.033V19.138ZM189.067 85.714H171.005L162.348 66.666H180.277L189.067 85.714ZM147.219 16.119L166.148 24.229L161.681 26.419L175.881 57.143H158.019L146.414 31.672L142.152 33.824L147.219 16.119ZM160.543 85.715H139.367V76.282C139.367 71.03 143.638 66.668 148.891 66.668H151.886V66.667L160.543 85.715ZM141.843 44.652L147.619 57.362C137.714 58.029 129.843 66.21 129.843 76.281V85.714H110.795V78.538C120.324 72.152 126.79 62.186 128.971 51.086L141.843 44.652ZM53.653 42.948C53.653 24.572 68.61 9.615 86.986 9.615C105.362 9.615 120.319 24.572 120.319 42.948C120.319 54.777 113.929 65.829 103.648 71.786L101.272 73.157V85.714H91.748V56.352C97.277 54.381 101.272 49.142 101.272 42.942C101.272 35.066 94.862 28.656 86.986 28.656C79.11 28.656 72.7 35.067 72.7 42.943C72.7 49.143 76.695 54.381 82.224 56.353V85.715H72.7V73.157L70.324 71.781C60.043 65.824 53.653 54.776 53.653 42.948ZM86.986 47.71C84.357 47.71 82.224 45.571 82.224 42.948C82.224 40.319 84.357 38.186 86.986 38.186C89.615 38.186 91.748 40.319 91.748 42.948C91.748 45.577 89.615 47.71 86.986 47.71ZM257.366 95.239C258.057 100 258.405 104.829 258.405 109.524L258.415 126.929C258.444 165.077 239.62 200.8 208.129 222.481L206.034 223.91V285.715H110.796V242.858H63.176V184.772L32.314 177.729L60.19 128.029L59.919 126.329C58.148 115.91 58.048 104.762 59.586 95.239H63.176H110.795H257.366V95.239ZM245.714 85.714H232.3L256.038 30.371L266.595 35.628L245.714 85.714ZM267.938 25.714L262.671 23.081L267.938 19.138V25.714Z"
+                fill="#25C03E"
+              />
+              <path
+                d="M96.51 123.81C88.634 123.81 82.224 119.048 82.224 109.524H72.7C72.7 123.81 83.381 133.334 96.51 133.334C109.639 133.334 120.32 123.81 120.32 109.524H110.796C110.795 119.048 104.386 123.81 96.51 123.81Z"
+                fill="#25C03E"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_180_12">
+                <rect width="295.238" height="295.238" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+          <h6 class="doing-now-1" *ngIf="!showConclusion">
+            Technoid will ask you some question that will help to put you on the
+            right path.
+          </h6>
+          <h6 class="doing-now-2" *ngIf="showConclusion">
+            Technoid have arrived to a recommendation
+          </h6>
+        </div>
+        <!-- start of Stepper bar -->
+        <section>
+          <div class="container">
+            <div class="accordion" id="accordionExample">
+              <div class="steps">
+                <progress
+                  id="progress1"
+                  value="0"
+                  max="100"
+                  #progress1
+                ></progress>
+                <div class="step-item">
+                  <button
+                    class="step-button text-center"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                    #stepOne
+                  >
+                    1
+                  </button>
+                  <div class="step-title">Phase 1</div>
+                </div>
+                <div class="step-item">
+                  <button
+                    class="step-button text-center collapsed"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                    #stepTwo
+                  >
+                    2
+                  </button>
+                  <div class="step-title">Phase 2</div>
+                </div>
+                <div class="step-item">
+                  <button
+                    class="step-button text-center collapsed"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                    #stepThree
+                  >
+                    3
+                  </button>
+                  <div class="step-title">Conclusion</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- End of stepper bar -->
+
+        <br />
+        <!-- first question -->
+        <div class="big-container">
+          <svg
+            width="30"
+            height="40"
+            viewBox="0 0 17 27"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.83105 4.03418L4.08398 5.24707L9.28027 13.5L4.08398 21.7529L4.83105 22.9658L10.791 13.5L4.83105 4.03418ZM8.5498 4.03418L7.80273 5.24707L12.999 13.5L7.80273 21.7529L8.5498 22.9658L14.5098 13.5L8.5498 4.03418Z"
+              fill="#14538E"
+              #arrow1
+            />
+          </svg>
+          <div class="Q&A-container" [hidden]="hideQ1">
+            <label class="question">
+              Are you an university student or graduate in the Cs Field ?
+            </label>
+            <div class="small-container">
+              <div class="answer-container">
+                <div class="form-check form-check-inline yes">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="inlineRadio1"
+                    value="true"
+                    (change)="firstAnswer = true; disableFirstNext = false"
+                  />
+                  <label class="form-check-label" for="inlineRadio1">Yes</label>
+                </div>
+                <div class="form-check form-check-inline no">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="inlineRadio2"
+                    value="false"
+                    (change)="firstAnswer = false; disableFirstNext = false"
+                  />
+                  <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+                <button
+                  class="btn btn-primary next-btn"
+                  [disabled]="disableFirstNext"
+                  (click)="advanceTo2()"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="recommendation">
-          <div class="non-cs-person" *ngIf="!firstAnswer">
-            <svg
-              width="25"
-              height="25"
-              viewBox="0 0 25 25"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M3.63329 21.0389C3.30194 21.0352 3.03633 20.7636 3.04003 20.4323L3.22773 3.63331C3.23143 3.30193 3.50304 3.03635 3.83439 3.04005L17.6335 3.19423C17.9649 3.19794 18.2305 3.46952 18.2268 3.8009L18.1805 7.94144C18.1787 8.10683 18.2452 8.26568 18.3644 8.38042L21.9234 11.8058C22.1724 12.0455 22.168 12.4455 21.9136 12.6795L18.279 16.0246C18.1573 16.1366 18.0872 16.2939 18.0854 16.4593L18.0391 20.5999C18.0354 20.9312 17.7638 21.1968 17.4324 21.1931L3.63329 21.0389Z"
-                stroke="black"
-                stroke-width="1.5"
-              />
-              <path
-                d="M7.13363 12.0775L9.72397 10.681L11.1781 8.12246L12.5746 10.7128L15.1331 12.1669L12.5428 13.5634L11.0887 16.122L9.69212 13.5316L7.13363 12.0775Z"
-                stroke="black"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <div class="non-cs-courses">
-              <span>For a soild ground we suggest u begin with </span>
-              <ul>
-                <li>Harvard cs50 course</li>
-                <li>Basic data Structure and Algorithms course</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="btn-group" *ngIf="fieldName.toLowerCase() === 'back-end'">
-            <button
-              type="button"
-              class="btn btn-primary dropdown-toggle"
-              data-toggle="dropdown"
-              aria-expanded="false"
-              #dropDownTitle
-            >
-              Select a region
-            </button>
-            <div class="dropdown-menu">
-              <a
-                class="dropdown-item"
-                (click)="selectedRegion = 'Asia'; getBackendLangs()"
-                >Asia</a
-              >
-              <a
-                class="dropdown-item"
-                (click)="
-                  selectedRegion = 'Egypt & NorthAfrica'; getBackendLangs()
-                "
-                >Egypt&North Africa</a
-              >
-              <a
-                class="dropdown-item"
-                (click)="selectedRegion = 'Europe'; getBackendLangs()"
-                >Europe</a
-              >
-              <a
-                class="dropdown-item"
-                (click)="selectedRegion = 'USA'; getBackendLangs()"
-                >USA</a
-              >
-            </div>
-          </div>
-
-          <div
-            class="any-person"
-            *ngIf="
-              fieldName.toLowerCase() !== 'back-end' ||
-              (fieldName.toLowerCase() === 'back-end' && selectedRegion)
-            "
+        <!-- End of the first question -->
+        <br />
+        <!-- Second question -->
+        <div class="big-container" *ngIf="showQ2Part1">
+          <svg
+            width="30"
+            height="40"
+            viewBox="0 0 17 27"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
+            <path
+              d="M4.83105 4.03418L4.08398 5.24707L9.28027 13.5L4.08398 21.7529L4.83105 22.9658L10.791 13.5L4.83105 4.03418ZM8.5498 4.03418L7.80273 5.24707L12.999 13.5L7.80273 21.7529L8.5498 22.9658L14.5098 13.5L8.5498 4.03418Z"
+              fill="#14538E"
+              #arrow2
+            />
+          </svg>
+          <div class="Q&A-container" [hidden]="hideQ2Part1">
+            <label class="question"> What field are u interested in ? </label>
+            <div class="small-container">
+              <div class="answer-container">
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="field"
+                    id="f-e"
+                    value="true"
+                    (change)="fieldName = 'Front-End'"
+                  />
+                  <label class="form-check-label" for="f-e">Front-End</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="field"
+                    id="b-e"
+                    value="true"
+                    (change)="fieldName = 'Back-End'"
+                  />
+                  <label class="form-check-label" for="b-e">Back-End</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="field"
+                    id="a"
+                    value="true"
+                    (change)="fieldName = 'Android'"
+                  />
+                  <label class="form-check-label" for="a">Android</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="field"
+                    id="ios"
+                    value="true"
+                    (change)="fieldName = 'iOS'"
+                  />
+                  <label class="form-check-label" for="ios">IOS</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="field"
+                    id="c-p"
+                    value="false"
+                    (change)="fieldName = 'Cross-Platform'"
+                  />
+                  <label class="form-check-label" for="c-p"
+                    >Cross-Platform</label
+                  >
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="field"
+                    id="none"
+                    value="true"
+                    (change)="fieldName = 'none'"
+                  />
+                  <label class="form-check-label" for="none">Don't Know</label>
+                </div>
+                <button
+                  class="btn btn-primary next-btn"
+                  [disabled]="!fieldName"
+                  (click)="evaluateFieldChoice()"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <!-- arrow represent if q2part2 is used when reloading saved data  -->
+        <svg
+        width="30"
+        height="40"
+        viewBox="0 0 17 27"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        #arrow3 
+        *ngIf="showQ2Part2Arrow"
+      >
+        <path
+          d="M4.83105 4.03418L4.08398 5.24707L9.28027 13.5L4.08398 21.7529L4.83105 22.9658L10.791 13.5L4.83105 4.03418ZM8.5498 4.03418L7.80273 5.24707L12.999 13.5L7.80273 21.7529L8.5498 22.9658L14.5098 13.5L8.5498 4.03418Z"
+          fill="#14538E"
+        />
+      </svg>
+        <div class="big-container" *ngIf="showQ2Part2">
+          <svg
+            width="30"
+            height="40"
+            viewBox="0 0 17 27"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            #arrow3 
+          >
+            <path
+              d="M4.83105 4.03418L4.08398 5.24707L9.28027 13.5L4.08398 21.7529L4.83105 22.9658L10.791 13.5L4.83105 4.03418ZM8.5498 4.03418L7.80273 5.24707L12.999 13.5L7.80273 21.7529L8.5498 22.9658L14.5098 13.5L8.5498 4.03418Z"
+              fill="#14538E"
+            />
+          </svg>
+          <div class="Q&A-container" [hidden]="hideQ2Part2">
+            <label class="question"> Are u interested in : </label>
+            <div class="small-container">
+              <div class="answer-container">
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input box"
+                    type="radio"
+                    name="field"
+                    id="f-e2"
+                    value="true"
+                    (change)="fieldName = 'Front-End'"
+                  />
+                  <label class="form-check-label box" for="f-e2"
+                    >Design user interface, color, screens and develop user side
+                    of website</label
+                  >
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input box"
+                    type="radio"
+                    name="field"
+                    id="b-e2"
+                    value="true"
+                    (change)="fieldName = 'Back-End'"
+                  />
+                  <label class="form-check-label box" for="b-e2"
+                    >Developing databases and the code that handle database and
+                    process it and design business logic of your website</label
+                  >
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="field"
+                    id="a2"
+                    value="true"
+                    (change)="fieldName = 'Android'"
+                  />
+                  <label class="form-check-label box" for="a2"
+                    >Making apps for android users</label
+                  >
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="field"
+                    id="ios2"
+                    value="true"
+                    (change)="fieldName = 'iOS'"
+                  />
+                  <label class="form-check-label box" for="ios2"
+                    >Making apps for iOS users</label
+                  >
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input box"
+                    type="radio"
+                    name="field"
+                    id="c-p2"
+                    value="false"
+                    (change)="fieldName = 'Cross-Platform'"
+                  />
+                  <label class="form-check-label box" for="c-p2"
+                    >Making apps that work on multiple platforms with one code
+                    rather than write code for each platform alone</label
+                  >
+                </div>
+                <button
+                  class="btn btn-primary next-btn"
+                  [disabled]="fieldName === 'none'"
+                  (click)="advanceTo3()"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Second question -->
+        <br />
+        <app-loader-spinner *ngIf="showSpinner"></app-loader-spinner>
+        <div class="conclusion-container" *ngIf="showConclusion">
+          <div class="upper-container">
             <svg
-              width="25"
-              height="25"
-              viewBox="0 0 25 25"
+              width="50"
+              height="50"
+              viewBox="0 0 43 37"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M3.63329 21.0389C3.30194 21.0352 3.03633 20.7636 3.04003 20.4323L3.22773 3.63331C3.23143 3.30193 3.50304 3.03635 3.83439 3.04005L17.6335 3.19423C17.9649 3.19794 18.2305 3.46952 18.2268 3.8009L18.1805 7.94144C18.1787 8.10683 18.2452 8.26568 18.3644 8.38042L21.9234 11.8058C22.1724 12.0455 22.168 12.4455 21.9136 12.6795L18.279 16.0246C18.1573 16.1366 18.0872 16.2939 18.0854 16.4593L18.0391 20.5999C18.0354 20.9312 17.7638 21.1968 17.4324 21.1931L3.63329 21.0389Z"
-                stroke="black"
-                stroke-width="1.5"
-              />
-              <path
-                d="M7.13363 12.0775L9.72397 10.681L11.1781 8.12246L12.5746 10.7128L15.1331 12.1669L12.5428 13.5634L11.0887 16.122L9.69212 13.5316L7.13363 12.0775Z"
-                stroke="black"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
+              <g clip-path="url(#clip0_16_21)">
+                <path
+                  d="M42.1898 0.00504533C42.1638 0.00389069 42.1378 0.00389069 42.1119 0.00504533C41.7215 0.0433958 41.4279 0.329415 41.4319 0.667477V2.67267C41.3037 2.68587 38.94 2.88413 37.5231 3.01032L37.628 4.56191L33.6952 4.76018L33.5994 3.34541C29.5239 3.65791 24.7362 3.96141 21.4955 3.96141C14.9472 3.96141 2.06428 2.72158 1.55907 2.67275V0.667648C1.56309 0.303194 1.22302 0.00504597 0.799564 0.00158206C0.770139 0.00133463 0.740713 0.00257227 0.711479 0.00521145C0.321089 0.043562 0.027505 0.329586 0.0315306 0.667648V36.2811C-0.00632949 36.644 0.30489 36.9647 0.726719 36.9973C1.14855 37.0299 1.52121 36.7621 1.55907 36.3992C1.56319 36.3598 1.56319 36.3204 1.55907 36.2811V16.5156C1.80827 16.5288 4.56219 16.6478 6.89361 16.7475L6.97747 15.3454L10.9132 15.5181L10.8293 16.9021C14.535 17.0374 18.5702 17.1598 21.4954 17.1598C28.1392 17.1598 40.7081 16.5508 41.4319 16.5156V36.2811C41.435 36.6469 41.7822 36.9414 42.2073 36.9386C42.6281 36.9361 42.9684 36.6432 42.9715 36.2811V0.667648C42.9766 0.303277 42.6374 0.0043021 42.2138 -6.90376e-05C42.2058 -0.000151512 42.1977 -0.000148411 42.1897 1.65375e-05L42.1898 0.00504533Z"
+                  fill="#5A3392"
+                />
+                <path
+                  d="M1.55907 3.99829C2.33899 4.07351 14.7983 5.28184 21.4955 5.28168C28.1876 5.28168 40.6332 4.07598 41.432 3.99829V15.194C40.8529 15.2243 28.0665 15.8411 21.4955 15.8411C14.9246 15.8411 2.13828 15.2222 1.55907 15.194C1.55907 15.194 1.55907 3.99829 1.55907 3.99829Z"
+                  fill="#EE746C"
+                />
+                <path
+                  d="M3.52396 4.58057V14.6734C3.96064 14.6945 11.9529 15.0735 18.069 15.2017L24.8862 5.6501C23.6684 5.70016 22.4986 5.73727 21.4955 5.73727C15.4578 5.73727 4.2271 4.64837 3.52396 4.58008V4.58057ZM39.4671 4.58057C39.1225 4.61356 36.2965 4.87971 32.8626 5.14758L25.8147 15.1863C31.7898 15.0399 39.0528 14.6932 39.4671 14.6734V4.58057ZM30.1877 5.34346C29.1472 5.41612 28.0986 5.48927 27.0577 5.54709L20.2554 15.2378C20.6423 15.2378 21.1445 15.2589 21.4954 15.2589C21.9583 15.2589 22.6076 15.2366 23.1309 15.2312L30.1877 5.34461V5.34346Z"
+                  fill="#FB9761"
+                />
+                <path
+                  d="M5.31862 6.60674C4.92402 6.64072 4.62458 6.92798 4.62804 7.26909V13.854C4.62823 14.2199 4.97309 14.5162 5.39818 14.516C5.82307 14.5159 6.16736 14.2196 6.16765 13.854V7.9218H8.4544C8.87642 7.95239 9.24736 7.68279 9.28282 7.31949C9.31828 6.95644 9.00495 6.63734 8.58293 6.60666C8.54019 6.60361 8.49715 6.60361 8.4544 6.60666H5.39779C5.37144 6.60559 5.34498 6.60558 5.31862 6.60674Z"
+                  fill="#5A3392"
+                />
+                <path
+                  d="M5.78273 9.8992C5.35755 9.89549 5.00952 10.1892 5.0053 10.555C5.00109 10.9208 5.34231 11.2202 5.76739 11.2239C5.77247 11.2239 5.77755 11.2239 5.78273 11.2239H6.91479C7.33998 11.2202 7.6812 10.9207 7.67689 10.555C7.67276 10.1943 7.33394 9.90275 6.91479 9.8992H5.78273Z"
+                  fill="#5A3392"
+                />
+                <path
+                  d="M19.1072 6.60668C18.7128 6.64569 18.418 6.93724 18.4279 7.27869V11.4771L15.2581 6.93781C15.0421 6.62433 14.5715 6.52091 14.2073 6.70697C13.9729 6.82664 13.8299 7.04446 13.8317 7.27902V13.8543C13.796 14.2173 14.1093 14.5366 14.5314 14.5673C14.9534 14.598 15.3244 14.3284 15.36 13.9653C15.3636 13.9284 15.3636 13.8912 15.36 13.8543V9.63629L18.5411 14.1951C18.7571 14.5085 19.2277 14.612 19.5919 14.4259C19.8263 14.3062 19.9693 14.0884 19.9675 13.8539V7.27861C19.9785 6.91423 19.6442 6.61122 19.2209 6.6019C19.1829 6.60107 19.1449 6.60264 19.1072 6.60668Z"
+                  fill="#5A3392"
+                />
+                <path
+                  d="M22.1751 6.60675C21.7807 6.64576 21.486 6.93731 21.4958 7.27875V13.854C21.496 14.2199 21.8409 14.5162 22.266 14.516C22.6909 14.5159 23.0351 14.2196 23.0354 13.854V7.27875C23.0465 6.91438 22.7121 6.61138 22.2888 6.60206C22.2508 6.60115 22.2128 6.60271 22.1751 6.60675Z"
+                  fill="#5A3392"
+                />
+                <path
+                  d="M32.9976 9.90906V11.2239H37.6052V9.90906H32.9976Z"
+                  fill="#5A3392"
+                />
+                <path
+                  d="M32.9071 6.60675C32.5126 6.64576 32.2179 6.93731 32.2278 7.27875V13.854C32.228 14.2199 32.5728 14.5162 32.9979 14.516C33.4228 14.5159 33.7671 14.2196 33.7674 13.854V7.27875C33.7784 6.91438 33.4441 6.61138 33.0207 6.60206C32.9828 6.60115 32.9448 6.60271 32.9071 6.60675Z"
+                  fill="#5A3392"
+                />
+                <path
+                  d="M37.5146 6.60665C37.1202 6.64567 36.8254 6.93722 36.8353 7.27866V13.8539C36.7997 14.217 37.1129 14.5362 37.5349 14.5669C37.9569 14.5977 38.328 14.3281 38.3635 13.9649C38.3672 13.9281 38.3672 13.8909 38.3635 13.8539V7.27866C38.3738 6.91429 38.0389 6.61177 37.6155 6.60295C37.5819 6.60229 37.5481 6.6036 37.5146 6.60665Z"
+                  fill="#5A3392"
+                />
+                <path
+                  d="M11.443 6.60665C11.0486 6.64567 10.7539 6.93722 10.7638 7.27866V13.8539C10.7281 14.217 11.0413 14.5362 11.4634 14.5669C11.8854 14.5977 12.2564 14.3281 12.292 13.9649C12.2956 13.9281 12.2956 13.8909 12.292 13.8539V7.27866C12.3022 6.91429 11.9673 6.61177 11.544 6.60295C11.5103 6.60229 11.4766 6.6036 11.443 6.60665Z"
+                  fill="#5A3392"
+                />
+                <path
+                  d="M26.8166 6.63608C25.4419 6.82759 24.4616 7.90635 24.5751 9.10049C24.6885 10.2947 25.8656 11.2269 27.2581 11.224H27.3149C27.3188 11.224 27.3227 11.224 27.3266 11.224C27.9339 11.2229 28.4205 11.609 28.47 12.1299C28.5192 12.6507 28.1071 13.1082 27.5077 13.1918C26.9083 13.2749 26.3502 12.9589 26.2058 12.4513C26.1417 12.0914 25.7506 11.8443 25.3323 11.8994C24.914 11.9547 24.6268 12.2912 24.6909 12.6512C24.6977 12.6892 24.7084 12.7267 24.7228 12.7631C25.0538 13.9267 26.3822 14.6887 27.7568 14.4968C29.1312 14.3048 30.1117 13.2168 29.9983 12.0227C29.8851 10.8312 28.7149 9.91014 27.3266 9.90882H27.2586C27.2547 9.90882 27.2509 9.90882 27.2469 9.90882C26.6396 9.90998 26.153 9.51368 26.1036 8.99319C26.0543 8.47245 26.4665 8.02478 27.0658 7.94115C27.6652 7.85802 28.2233 8.17423 28.3677 8.68153C28.4316 9.04153 28.8226 9.28861 29.241 9.23369C29.6593 9.17859 29.9466 8.84227 29.8827 8.48227C29.8759 8.44408 29.8652 8.40639 29.8508 8.36985C29.5197 7.20606 28.1913 6.44408 26.8168 6.63616L26.8166 6.63608Z"
+                  fill="#5A3392"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_16_21">
+                  <rect width="43" height="37" fill="white" />
+                </clipPath>
+              </defs>
             </svg>
-            <div class="any-courses">
-              <span *ngIf="fieldName.toLowerCase() === 'back-end'"
-                >Based on your region Technoid suggests
-                <span *ngIf="!firstAnswer"
-                  >that after the baiscs learn one of the following</span
-                >
-                <span *ngIf="firstAnswer"
-                  >that u learn one of the following</span
-                >
-              </span>
-              <span
-                *ngIf="
-                  fieldName.toLowerCase() !== 'back-end' &&
-                  (fieldName.toLowerCase() === 'front-end' ||
-                    fieldName.toLowerCase() === 'ios')
-                "
-                >Based on your selection Technoid suggests
-                <span *ngIf="!firstAnswer"
-                  >that after the baiscs learn the following</span
-                >
-                <span *ngIf="firstAnswer">that u learn the following</span>
-              </span>
-
-              <span
-                *ngIf="
-                  fieldName.toLowerCase() !== 'back-end' &&
-                  fieldName.toLowerCase() !== 'front-end' &&
-                  fieldName.toLowerCase() !== 'ios'
-                "
-                >Based on your selection Technoid suggests
-                <span *ngIf="!firstAnswer"
-                  >that after the baiscs learn one of the following</span
-                >
-                <span *ngIf="firstAnswer"
-                  >that u learn one of the following</span
-                >
-              </span>
-              <ul *ngIf="fieldName.toLowerCase() !== 'back-end'">
-                <li *ngFor="let fl of fieldLanguages">{{ fl }}</li>
-              </ul>
-              <ul *ngIf="fieldName.toLowerCase() === 'back-end'">
-                <li *ngFor="let fl of langsOfRegion">{{ fl }}</li>
-              </ul>
+            <div class="about-field">
+              <h4 class="field-name">{{ fieldName }}</h4>
+              <p class="field-desc">
+                {{ fieldDesc }}
+              </p>
             </div>
           </div>
-          <div class="reset-save">
-            <span style="color: #28a745">Save or reset data? </span>
-            <div class="reset-save-buttons">
+          <div class="recommendation">
+            <div class="non-cs-person" *ngIf="!firstAnswer">
+              <svg
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.63329 21.0389C3.30194 21.0352 3.03633 20.7636 3.04003 20.4323L3.22773 3.63331C3.23143 3.30193 3.50304 3.03635 3.83439 3.04005L17.6335 3.19423C17.9649 3.19794 18.2305 3.46952 18.2268 3.8009L18.1805 7.94144C18.1787 8.10683 18.2452 8.26568 18.3644 8.38042L21.9234 11.8058C22.1724 12.0455 22.168 12.4455 21.9136 12.6795L18.279 16.0246C18.1573 16.1366 18.0872 16.2939 18.0854 16.4593L18.0391 20.5999C18.0354 20.9312 17.7638 21.1968 17.4324 21.1931L3.63329 21.0389Z"
+                  stroke="black"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M7.13363 12.0775L9.72397 10.681L11.1781 8.12246L12.5746 10.7128L15.1331 12.1669L12.5428 13.5634L11.0887 16.122L9.69212 13.5316L7.13363 12.0775Z"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <div class="non-cs-courses">
+                <span>For a soild ground we suggest u begin with </span>
+                <ul>
+                  <li>Harvard cs50 course</li>
+                  <li>Basic data Structure and Algorithms course</li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="btn-group"
+              *ngIf="fieldName.toLowerCase() === 'back-end'"
+            >
               <button
-                class="btn btn-danger reset-btn"
-                (click)="resetQuestions();reload()"
+                type="button"
+                class="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-expanded="false"
               >
-                Reset
+                {{ dropDownTitle }}
               </button>
-              <button class="btn btn-primary" (click)="saveQuestions()">
-                save
+              <div class="dropdown-menu">
+                <br />
+                <a
+                  class="dropdown-item"
+                  (click)="selectedRegion = 'Asia'; getBackendLangs()"
+                  >Asia</a
+                >
+                <a
+                  class="dropdown-item"
+                  (click)="
+                    selectedRegion = 'Egypt & NorthAfrica'; getBackendLangs()
+                  "
+                  >Egypt&North Africa</a
+                >
+                <a
+                  class="dropdown-item"
+                  (click)="selectedRegion = 'Europe'; getBackendLangs()"
+                  >Europe</a
+                >
+                <a
+                  class="dropdown-item"
+                  (click)="selectedRegion = 'USA'; getBackendLangs()"
+                  >USA</a
+                >
+              </div>
+            </div>
+
+            <div
+              class="any-person"
+              *ngIf="
+                fieldName.toLowerCase() !== 'back-end' ||
+                (fieldName.toLowerCase() === 'back-end' && selectedRegion)
+              "
+            >
+              <svg
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.63329 21.0389C3.30194 21.0352 3.03633 20.7636 3.04003 20.4323L3.22773 3.63331C3.23143 3.30193 3.50304 3.03635 3.83439 3.04005L17.6335 3.19423C17.9649 3.19794 18.2305 3.46952 18.2268 3.8009L18.1805 7.94144C18.1787 8.10683 18.2452 8.26568 18.3644 8.38042L21.9234 11.8058C22.1724 12.0455 22.168 12.4455 21.9136 12.6795L18.279 16.0246C18.1573 16.1366 18.0872 16.2939 18.0854 16.4593L18.0391 20.5999C18.0354 20.9312 17.7638 21.1968 17.4324 21.1931L3.63329 21.0389Z"
+                  stroke="black"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M7.13363 12.0775L9.72397 10.681L11.1781 8.12246L12.5746 10.7128L15.1331 12.1669L12.5428 13.5634L11.0887 16.122L9.69212 13.5316L7.13363 12.0775Z"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <div class="any-courses">
+                <span *ngIf="fieldName.toLowerCase() === 'back-end'"
+                  >Based on your region Technoid suggests
+                  <span *ngIf="!firstAnswer"
+                    >that after the baiscs learn one of the following</span
+                  >
+                  <span *ngIf="firstAnswer"
+                    >that u learn one of the following</span
+                  >
+                </span>
+                <span
+                  *ngIf="
+                    fieldName.toLowerCase() !== 'back-end' &&
+                    (fieldName.toLowerCase() === 'front-end' ||
+                      fieldName.toLowerCase() === 'ios')
+                  "
+                  >Based on your selection Technoid suggests
+                  <span *ngIf="!firstAnswer"
+                    >that after the baiscs learn the following</span
+                  >
+                  <span *ngIf="firstAnswer">that u learn the following</span>
+                </span>
+
+                <span
+                  *ngIf="
+                    fieldName.toLowerCase() !== 'back-end' &&
+                    fieldName.toLowerCase() !== 'front-end' &&
+                    fieldName.toLowerCase() !== 'ios'
+                  "
+                  >Based on your selection Technoid suggests
+                  <span *ngIf="!firstAnswer"
+                    >that after the baiscs learn one of the following</span
+                  >
+                  <span *ngIf="firstAnswer"
+                    >that u learn one of the following</span
+                  >
+                </span>
+                <ul *ngIf="fieldName.toLowerCase() !== 'back-end'">
+                  <li *ngFor="let fl of fieldLanguages">{{ fl }}</li>
+                </ul>
+                <ul *ngIf="fieldName.toLowerCase() === 'back-end'">
+                  <li *ngFor="let fl of langsOfRegion">{{ fl }}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="reset-save"*ngIf="
+            fieldName.toLowerCase() !== 'back-end' ||
+            (fieldName.toLowerCase() === 'back-end' && selectedRegion)
+          ">
+              <span style="color: #28a745"> reset data? </span>
+              <div class="reset-save-buttons">
+                <button
+                  class="btn btn-danger reset-btn"
+                  (click)="resetQuestions()"
+                >
+                  Reset
+                </button>
+                <button class="btn btn-primary" (click)="saveQuestionsData()">
+                  save
+                </button>
+              </div>
+            </div>
+            <div
+              class="go-to-courses"
+              *ngIf="
+                fieldName.toLowerCase() !== 'back-end' ||
+                (fieldName.toLowerCase() === 'back-end' && selectedRegion)
+              "
+            >
+              <span style="color: #28a745"
+                >Wanna take a look at some recommended courses ?</span
+              >
+              <button class="btn btn-success" (click)="goToCourses()">
+                Go to courses
               </button>
             </div>
-          </div>
-          <div
-            class="go-to-courses"
-            *ngIf="
-              fieldName.toLowerCase() !== 'back-end' ||
-              (fieldName.toLowerCase() === 'back-end' && selectedRegion)
-            "
-          >
-            <span style="color: #28a745"
-              >Wanna take a look at some recommended courses ?</span
-            >
-            <button class="btn btn-success" (click)="goToCourses()">
-              Go to courses
-            </button>
           </div>
         </div>
       </div>

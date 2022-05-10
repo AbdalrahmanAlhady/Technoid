@@ -32,6 +32,9 @@ const appRoutes: Routes = [
     LoaderSpinnerComponent,
     CourseIconComponent,
     SubCourseIconComponent,
+    LoaderSpinnerComponent,
+
+
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ObjectUnsubscribedError, timeout, toArray } from 'rxjs';
+import { QuestionsFormType } from '../core/QuestionsForm.model';
 import { PassingData } from '../shared/passingData.service';
 import { CoursesService } from './courses.service';
 
@@ -14,12 +14,15 @@ export class CoursesComponent implements OnInit {
   firstAnswer: boolean = false;
   showSpinner: boolean = false;
   showContent: boolean = false;
-  choosenRegion: string = '';
+  choosenRegion!: string;
   basicCoursesLinks: { [key: string]: string } = { CS50: '', DSA: '' };
   coursesLinks: { [key: string]: string } = {};
   manyCoursesLinks: [{ [key: string]: string }] = [{}];
-  backendORCrossCoursesLinks: { [key: string]: [{ [key: string]: string }] } = {};
-  dbCoursesLinks:[{ [key: string]: string }]=[{}];
+  backendORCrossCoursesLinks: { [key: string]: [{ [key: string]: string }] } =
+    {};
+  dbCoursesLinks: [{ [key: string]: string }] = [{}];
+  userID: string = JSON.parse(localStorage.getItem('userData') || '{}').id;
+  loadedQuestionsData!: QuestionsFormType;
   constructor(
     private passDataService: PassingData,
     private coursesService: CoursesService
@@ -31,18 +34,28 @@ export class CoursesComponent implements OnInit {
       this.showSpinner = false;
       this.showContent = true;
     }, 1600);
+    this.passDataService.checkIfDataSaved(this.userID).subscribe({
+      next: (isDataSaved: boolean) => {
+        if (isDataSaved) {
+          this.getSavedCoursesData();
+          setTimeout(() => {
+            console.log(this.loadedQuestionsData);
 
-    // if (!!localStorage.getItem('questionsForm')) {
+            console.log(this.fieldLangs);
+            console.log(this.fieldName);
+            console.log(this.firstAnswer);
+          }, 1500);
+        } else {
+          console.log('eles');
 
-    //   this.getSavedCoursesData();
-    //   console.log(this.fieldLangs);
-      
-    // }else{
-      this.fieldName = this.passDataService.getFieldName();
-    this.firstAnswer = this.passDataService.getFirstAnswer();
-    // }
-
-    
+          this.fieldName = this.passDataService.getFieldName();
+          this.firstAnswer = this.passDataService.getFirstAnswer();
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
 
     this.setBasicCoursesLinks();
     if (this.fieldName.toLowerCase() === 'back-end') {
@@ -104,31 +117,44 @@ export class CoursesComponent implements OnInit {
             this.backendORCrossCoursesLinks = links;
           });
         }
-       
       });
     }
   }
   setCrossPlatformCourses() {
     if (this.fieldName.toLowerCase() === 'cross-platform') {
       this.coursesService.getBackEndCourseLink().subscribe((links) => {
-        this.backendORCrossCoursesLinks = links;      
+        this.backendORCrossCoursesLinks = links;
       });
-    } 
+    }
   }
-  setDBCourses(){
-    this.coursesService.getDBCourseLink().subscribe((links)=>{
-       this.dbCoursesLinks = links; 
-    })
+  setDBCourses() {
+    this.coursesService.getDBCourseLink().subscribe((links) => {
+      this.dbCoursesLinks = links;
+    });
   }
-  getSavedCoursesData(){
-    const loadedQuestionsData: {
-      answerOne: boolean;
-      fieldName: string;
-      fieldDesc: string;
-      fieldLangs: string[];
-      isq2part2: boolean;
-    } = JSON.parse(localStorage.getItem('questionsForm') || '{}');
-    this.firstAnswer = loadedQuestionsData.answerOne;
-    this.fieldName = loadedQuestionsData.fieldName;
+  getSavedCoursesData() {
+    this.passDataService
+      .getQuestionData(this.userID)
+      .subscribe((questionsData) => {
+        this.loadedQuestionsData = questionsData;
+      });
+    setTimeout(() => {
+      this.firstAnswer = this.loadedQuestionsData.answerOne;
+      this.fieldName = this.loadedQuestionsData.fieldName;
+      this.choosenRegion = this.loadedQuestionsData.region!;
+
+      if (this.fieldName.toLowerCase() === 'back-end') {
+        const temp = this.loadedQuestionsData.langsOfRegion!;
+        this.fieldLangs = Object.keys(temp).map((key) => {
+          return temp[key];
+        });
+        this.setBackEndCourseLinks();
+        
+      } else {
+        this.fieldLangs = this.loadedQuestionsData.fieldLangs!;
+        this.setMainCoursesLinks();
+        this.setCrossPlatformCourses();
+      }
+    }, 1500);
   }
 }
