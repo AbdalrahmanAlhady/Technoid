@@ -11,7 +11,15 @@ import { AuthService } from '../auth/auth.service';
 export class NavBarComponent implements OnInit {
   showSignOut: boolean = false;
   constructor(private router: Router,private authService:AuthService) {
-   
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        if (event.url !== '/auth') {
+          this.showSignOut = true;
+        } else {
+          this.showSignOut = false;
+        }
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -21,3 +29,4 @@ export class NavBarComponent implements OnInit {
     this.authService.logout();
   }
 }
+

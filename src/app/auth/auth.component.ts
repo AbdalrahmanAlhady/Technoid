@@ -14,7 +14,7 @@ export class AuthComponent implements OnInit {
   showSpinner = false;
   error: string = null!;
   isResettingPassword: boolean = false;
-  emailSent:boolean=false;
+  emailSent: boolean = false;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
@@ -60,12 +60,12 @@ export class AuthComponent implements OnInit {
   sendRPEmail(email: string) {
     this.authService.sendResetPasswordEmail(email).subscribe({
       next: (value) => {
-        this.emailSent=true;
+        this.emailSent = true;
+        setTimeout(() => {
+          window.location.reload();
+          
+        }, 900);
       },
     });
-    setTimeout(() => {
-      
-    }, 1600);
   }
-
 }
