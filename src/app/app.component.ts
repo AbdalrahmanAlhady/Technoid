@@ -24,8 +24,7 @@ export class AppComponent implements OnInit {
         value: "#fff"
       }
     },
-    
-    fpsLimit: 30,
+    fpsLimit: 60,
     interactivity: {
       events: {
         onClick: {

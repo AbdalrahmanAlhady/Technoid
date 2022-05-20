@@ -32,7 +32,7 @@ export class AuthService {
   signUp(email: string, pass: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAlFOPBcWw4oArx_k4RPnqOVELphTnVJbU',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB-ihwWSz0EtCTSF73xZu4NBVQrDDnxhXY',
         {
           email: email,
           password: pass,
@@ -55,7 +55,7 @@ export class AuthService {
   signIn(email: string, pass: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAlFOPBcWw4oArx_k4RPnqOVELphTnVJbU',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB-ihwWSz0EtCTSF73xZu4NBVQrDDnxhXY',
         {
           email: email,
           password: pass,
@@ -76,7 +76,7 @@ export class AuthService {
   }
   sendResetPasswordEmail(email:string){
     return this.http
-      .post<{email:string}>('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyAlFOPBcWw4oArx_k4RPnqOVELphTnVJbU',{
+      .post<{email:string}>('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyB-ihwWSz0EtCTSF73xZu4NBVQrDDnxhXY',{
         requestType:"PASSWORD_RESET",
         email: email
       }).pipe(
