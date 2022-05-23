@@ -15,12 +15,9 @@ export class PassingData {
   choosenRegion: string = '';
   langsOfRegion: [{ [key: number]: string }] = [{}];
   isQ2Part2Used: boolean = false;
-  userData: User = JSON.parse(localStorage.getItem('userData') || '{}');
-  userID: string = this.userData.id;
+  userData!: User ;
+  userID!: string ;
   constructor(private http: HttpClient) {
-    this.userID = JSON.parse(localStorage.getItem('userData') || '{}').id;
-
-    this.getQuestionData(this.userID);
   }
 
   setFieldName(name: string) {
@@ -68,6 +65,9 @@ export class PassingData {
   }
 
   saveQuestions() {
+    this.userData= JSON.parse(localStorage.getItem('userData') || '{}')
+    this.userID = JSON.parse(localStorage.getItem('userData') || '{}').id;
+     
     const questionsForm = new QuestionsForm(
       this.firstAnswer,
       this.fieldName,
@@ -95,6 +95,7 @@ export class PassingData {
       });
   }
   getQuestionData(userId: string) {
+
     return this.http
       .get<QuestionsFormType>(
         'https://technoid-2022-default-rtdb.firebaseio.com/questionsData.json'

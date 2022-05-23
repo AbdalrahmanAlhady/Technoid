@@ -136,10 +136,11 @@ export class AuthService {
     token: string,
     expiresIn: number
   ) {
+    localStorage.removeItem('userData')
     const expirationData = new Date(new Date().getTime() + +expiresIn * 1000);
     const user = new User(email, id, token, expirationData);
     this.user.next(user);
-    // this.autoLogout(expiresIn * 1000);
+    this.autoLogout(expiresIn * 1000);
     localStorage.setItem('userData', JSON.stringify(user));
   }
 
@@ -159,4 +160,7 @@ export class AuthService {
     }
     return throwError(errorMessage);
   }
+  ngOnDestroy() {
+    this.user.unsubscribe();
+}
 }

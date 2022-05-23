@@ -44,7 +44,7 @@ export class CoreComponent implements OnInit, AfterViewInit {
   langsOfRegion: [{ [key: number]: string }] = [{}];
   selectedRegion: string = '';
   dropDownTitle: string = 'Select a region';
-  userID: string = JSON.parse(localStorage.getItem('userData') || '{}').id;
+  userID!: string ;
   loadedQuestionsData!: QuestionsFormType;
   loadingData: boolean = true;
 
@@ -56,6 +56,7 @@ export class CoreComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+   this.userID = JSON.parse(localStorage.getItem('userData') || '{}').id;
     this.passDataService.checkIfDataSaved(this.userID).subscribe({
       next: (isDataSaved: boolean) => {
         if (isDataSaved) {
