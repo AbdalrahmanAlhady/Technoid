@@ -31,6 +31,8 @@ export class CoreService {
       )
       .pipe(
         map((fieldLanguages) => {
+          console.log(fieldLanguages);
+          
           return fieldLanguages[fieldName];
         })
       );

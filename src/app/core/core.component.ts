@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   Renderer2,
   ViewChild,
@@ -10,14 +11,15 @@ import { CoreService } from './core.service';
 import { Router } from '@angular/router';
 import { PassingData } from '../shared/passingData.service';
 import { QuestionsForm, QuestionsFormType } from './QuestionsForm.model';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, Subscription } from 'rxjs';
+import { QuestionComponent } from './question/question.component';
 
 @Component({
   selector: 'app-core',
   templateUrl: './core.component.html',
   styleUrls: ['./core.component.css'],
 })
-export class CoreComponent implements OnInit, AfterViewInit {
+export class CoreComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('stepOne') stepOne!: ElementRef;
   @ViewChild('stepTwo') stepTwo!: ElementRef;
   @ViewChild('stepThree') stepThree!: ElementRef;
@@ -25,6 +27,8 @@ export class CoreComponent implements OnInit, AfterViewInit {
   @ViewChild('Q&A1') q1!: ElementRef;
   @ViewChild('arrow1') arrow1!: ElementRef;
   @ViewChild('arrow2') arrow2!: ElementRef;
+  @ViewChild(QuestionComponent) question!: QuestionComponent;
+
   firstAnswer!: boolean;
   disableFirstNext: boolean = true;
   resultColor!: String;
@@ -34,7 +38,7 @@ export class CoreComponent implements OnInit, AfterViewInit {
   showQ2Part1: boolean = false;
   showQ2Part2: boolean = false;
   isQ2Part2Used: boolean = false;
- showQ2Part2Arrow:boolean=false
+  showQ2Part2Arrow: boolean = false;
   fieldName: string = '';
   fieldDesc: string = '';
   fieldLanguages!: string[];
@@ -44,9 +48,12 @@ export class CoreComponent implements OnInit, AfterViewInit {
   langsOfRegion: [{ [key: number]: string }] = [{}];
   selectedRegion: string = '';
   dropDownTitle: string = 'Select a region';
-  userID!: string ;
+  userID!: string;
   loadedQuestionsData!: QuestionsFormType;
   loadingData: boolean = true;
+  subscriptions: Subscription[] = [];
+
+  countries:string[]=['Asia','Egypt & NorthAfrica','Europe','USA'];
 
   constructor(
     private render: Renderer2,
@@ -56,44 +63,42 @@ export class CoreComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-   this.userID = JSON.parse(localStorage.getItem('userData') || '{}').id;
-    this.passDataService.checkIfDataSaved(this.userID).subscribe({
-      next: (isDataSaved: boolean) => {
-        if (isDataSaved) {
-          this.getSavedQuestions();
-        }
-      },
-      error: (error) => {
-      },
-    });
+    this.userID = JSON.parse(localStorage.getItem('userData') || '{}').id;
+    this.subscriptions.push(
+      this.passDataService.checkIfDataSaved(this.userID).subscribe({
+        next: (isDataSaved: boolean) => {
+          if (isDataSaved) {
+            this.getSavedQuestions();
+          }
+        },
+        error: (error) => {},
+      })
+    );
   }
   ngAfterViewInit() {
-    this.passDataService
-      .checkIfDataSaved(this.userID)
-      .subscribe((isDataSaved: boolean) => {
-        if (!isDataSaved) {
-          this.render.addClass(this.stepOne?.nativeElement, 'active');
-          this.loadingData = false;
-        }else{
-          setTimeout(() => {
-            if(this.loadedQuestionsData.isq2part2){
-            this.showQ2Part2Arrow=true;
+    this.subscriptions.push(
+      this.passDataService
+        .checkIfDataSaved(this.userID)
+        .subscribe((isDataSaved: boolean) => {
+          if (!isDataSaved) {
+            this.render.addClass(this.stepOne?.nativeElement, 'active');
+            this.loadingData = false;
+          } else {
+            setTimeout(() => {
+              if (this.loadedQuestionsData.isq2part2) {
+                this.showQ2Part2Arrow = true;
+              }
+            }, 500);
           }
-          }, 500);
-          
-          
-        }
-      });
+        })
+    );
   }
-  advanceTo2() {
+  advanceTo2(firstAnswer?:boolean) {
+    this.firstAnswer = firstAnswer!;
     this.firstAnswer
       ? (this.resultColor = '#25C03E')
       : (this.resultColor = '#FD0202');
-    if (this.firstAnswer) {
-      this.render.setAttribute(this.arrow1.nativeElement, 'fill', '#25C03E');
-    } else {
-      this.render.setAttribute(this.arrow1.nativeElement, 'fill', '#FD0202');
-    }
+
     this.render.removeClass(this.stepOne?.nativeElement, 'active');
     this.render.addClass(this.stepOne?.nativeElement, 'done');
     this.render.addClass(this.stepTwo?.nativeElement, 'active');
@@ -109,6 +114,7 @@ export class CoreComponent implements OnInit, AfterViewInit {
   }
 
   advanceTo3(savedData?: boolean) {
+    
     this.render.removeClass(this.stepTwo?.nativeElement, 'active');
     this.render.addClass(this.stepTwo?.nativeElement, 'done');
     this.render.addClass(this.stepThree?.nativeElement, 'active');
@@ -123,34 +129,56 @@ export class CoreComponent implements OnInit, AfterViewInit {
     }, 1600);
 
     // get field description
+    this.subscriptions.push(
+      this.coreService
+        .getFieldDesc(this.fieldName.toLowerCase())
+        .subscribe((fd) => {
+          this.fieldDesc = fd;
+        })
+    );
+    if (this.fieldName) {
+      // get languages names
+      this.subscriptions.push(
+        this.coreService
+          .getFieldLanguages(this.fieldName.toLowerCase())
+          .subscribe((fl) => {
+            if (fl) {
+              if (this.fieldName.toLowerCase() === 'back-end') {
+                this.fieldLanguages = [];
+              } else {
+                this.fieldLanguages = fl.split(' ');
+              }
+            }
+          })
+      );
+    }
 
-    this.coreService
-      .getFieldDesc(this.fieldName.toLowerCase())
-      .subscribe((fd) => {
-        this.fieldDesc = fd;
-      });
+    this.subscriptions.push(
+      this.coreService.getBackendLangByRegion().subscribe((langsOfRegion) => {
+        this.langsOfBackend = langsOfRegion;
+      })
+    );
+  }
 
-    // get languages names
-
-    this.coreService
-      .getFieldLanguages(this.fieldName.toLowerCase())
-      .subscribe((fl) => {
-        if (this.fieldName.toLowerCase() === 'back-end') {
-          this.fieldLanguages = [];
-        } else {
-          this.fieldLanguages = fl.split(' ');
-        }
-      });
-    this.coreService.getBackendLangByRegion().subscribe((langsOfRegion) => {
-      this.langsOfBackend = langsOfRegion;
-    });
+  setFieldName(nameORIsSaved?: any) {
+    if (typeof nameORIsSaved == 'boolean') {
+      this.evaluateFieldChoice(nameORIsSaved);
+    } else {
+      nameORIsSaved
+        ? (this.fieldName = nameORIsSaved)
+        : this.fieldName === this.fieldName;
+      this.evaluateFieldChoice();
+    }
   }
 
   evaluateFieldChoice(savedData?: boolean) {
     if (this.fieldName !== 'none') {
       this.advanceTo3(savedData);
+      // q2arrow color
     } else {
       this.advanceTo2Part2();
+      // q2arrow color
+      // q3arrow color
     }
   }
 
@@ -159,20 +187,17 @@ export class CoreComponent implements OnInit, AfterViewInit {
     this.langsOfRegion = this.langsOfBackend[this.selectedRegion];
   }
   goToCourses() {
-    this.passData();
-    setTimeout(() => {
-      this.passDataService.saveQuestions();
-    }, 500);
+    this.saveQuestionsData();
     setTimeout(() => {
       this.router.navigate(['courses']);
-    }, 600);
-    
+    }, 400);
   }
+
   saveQuestionsData() {
     this.passData();
     setTimeout(() => {
       this.passDataService.saveQuestions();
-    }, 500);
+    }, 200);
   }
 
   passData() {
@@ -189,18 +214,22 @@ export class CoreComponent implements OnInit, AfterViewInit {
   }
   resetQuestions() {
     this.loadingData = false;
-    this.passDataService.deleteQuestionData(this.userID).subscribe((d) => {});
+    this.subscriptions.push(
+      this.passDataService.deleteQuestionData(this.userID).subscribe((d) => {})
+    );
     setTimeout(() => {
       window.location.reload();
     }, 500);
   }
 
   getSavedQuestions() {
-    this.passDataService
-      .getQuestionData(this.userID)
-      .subscribe((questionsData) => {
-        this.loadedQuestionsData = questionsData;
-      });
+    this.subscriptions.push(
+      this.passDataService
+        .getQuestionData(this.userID)
+        .subscribe((questionsData) => {
+          this.loadedQuestionsData = questionsData;
+        })
+    );
 
     setTimeout(() => {
       this.firstAnswer = this.loadedQuestionsData.answerOne;
@@ -208,7 +237,6 @@ export class CoreComponent implements OnInit, AfterViewInit {
       this.fieldDesc = this.loadedQuestionsData.fieldDesc;
       this.selectedRegion = this.loadedQuestionsData.region!;
       this.dropDownTitle = this.loadedQuestionsData.region!;
-      
 
       if (this.fieldName.toLocaleLowerCase() !== 'back-end') {
         this.fieldLanguages = this.loadedQuestionsData.fieldLangs!;
@@ -222,8 +250,15 @@ export class CoreComponent implements OnInit, AfterViewInit {
       this.hideQ2Part2 = true;
       this.showConclusion = true;
       this.advanceTo2();
-      this.evaluateFieldChoice(true);
+      this.question.advanceToNextQuestion();
+      this.setFieldName(true);
+      
       this.loadingData = false;
-    }, 1600);
+    }, 500);
+  }
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => {
+      subscription.unsubscribe();
+    });
   }
 }

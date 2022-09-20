@@ -310,4 +310,28 @@ li {
 a{
   cursor: pointer;
 }
+ng-select{
+  z-index: 3;
+  width: 250px;
+}
+.select-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 3;
+}
+.select-wrapper{
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+}
+.select-label{
+  margin: 0;
+  color: rgb(20, 83, 142);
+}
+app-recommendation-icon{
+  margin-right: 5px;
+}
 

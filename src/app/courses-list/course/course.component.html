@@ -1,0 +1,29 @@
+<div class="course" *ngIf="!nestedCourse">
+  <div class="course-info">
+    <app-course-icon [size]="25"></app-course-icon>
+    <div class="course-titleLink">
+      <span class="course-title">{{simpleCourse.name}}</span>
+      <a class="course-link" target="_blank" [href]="simpleCourse.url">Go to recommended course</a>
+    </div>
+  </div>
+
+</div>
+<div class="course" *ngIf="nestedCourse">
+  <div class="course-info">
+    <app-course-icon [size]="25"></app-course-icon>
+    <div class="course-titleLink">
+      <span class="course-title">{{trackName}}</span>
+      <!-- <a class="course-link" target="_blank" [href]="nestedCourses[0].url">Go to recommended course</a> -->
+    </div>
+  </div>
+  <div class="sub-courses-wrapper" *ngFor="let course of nestedCourses ">
+    <div>
+      <div class="course sub-course course-info">
+        <app-sub-course-icon [size]="25"></app-sub-course-icon>
+        <span class="course-title">{{course.name}}</span>
+
+        <a class="course-link" target="_blank" [href]="course.url">Go to recommended course</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+.course {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    margin-left: 10px;
+  }
+  
+  .course-info {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .course-titleLink {
+    display: flex;
+    flex-direction: row;
+    width: 550px;
+  }
+  
+  .course-title {
+    margin-left: 10px;
+    margin-right: auto;
+    color: #14538E;
+    font-weight: bold;
+  }
+  
+  .course-link {
+    color: #25C03E;
+    font-weight: bold;
+  
+  }
+  .sub-course .course-title {
+    color: #5A3392;
+  }
+  
+  .sub-courses-wrapper {
+    margin-left: 25px;
+    margin-top: 5px;
+    width: 550px;
+  }

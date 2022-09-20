@@ -1,0 +1,77 @@
+<!-- first question -->
+<div class="big-container" *ngIf="questionNumber === 1">
+
+    <app-question-icon [color]="arrow1Color"></app-question-icon>
+    <div class="Q&A-container" [hidden]="hideQuestion">
+        <label class="question">
+            Are you an university student or graduate in the Cs Field ?
+        </label>
+        <div class="small-container">
+            <div class="answer-container">
+                <div class="form-check form-check-inline yes">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                        value="true" (change)="answerResult = true; disableNextBtn = false" />
+                    <label class="form-check-label" for="inlineRadio1">Yes</label>
+                </div>
+                <div class="form-check form-check-inline no">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                        value="false" (change)="answerResult = false; disableNextBtn = false" />
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+                <button class="btn btn-primary next-btn" [disabled]="disableNextBtn" (click)="advanceToNextQuestion()">
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of the first question -->
+<!-- second question -->
+<div class="big-container" *ngIf="questionNumber===2&&showQuestion">
+
+    <app-question-icon [color]="arrow2Color"></app-question-icon>
+    <div class="Q&A-container" [hidden]="hideQuestion">
+        <label class="question"> What field are u interested in ? </label>
+        <div class="small-container">
+            <div class="answer-container">
+                <div class="form-check form-check-inline" *ngFor="let field of fields,let i = index ">
+                    <input class="form-check-input" type="radio" name="field" id="{{i}}" value="true"
+                        (change)="fieldName = field"  />
+                    <label class="form-check-label" for="{{i}}">{{field}}</label>
+                </div>
+                <button class="btn btn-primary next-btn" [disabled]="!fieldName" (click)="callEvaluateFieldChoice()">
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of second question -->
+
+<!-- second question part 2 -->
+<!-- arrow represent if q2part2 is used when reloading saved data  -->
+
+<app-question-icon [color]="arrow3Color"  *ngIf="showQuestionArrow"></app-question-icon>
+<div class="big-container" *ngIf="questionNumber=== +'2.1'&&showQuestion">
+    
+    <app-question-icon [color]="arrow3Color"  ></app-question-icon>
+
+    <div class="Q&A-container" [hidden]="hideQuestion">
+        <label class="question"> Are u interested in : </label>
+        <div class="small-container">
+            <div class="answer-container">
+                <div class="form-check form-check-inline" *ngFor="let field of fields, let i = index">
+                    <input class="form-check-input box" type="radio" name="field" id="{{i}}+2" value="true"
+                        (change)="fieldName = field" *ngIf="i !== fields.length-1"/>
+                    <label class="form-check-label box" for="{{i}}+2">{{fieldsDesc[i]}}</label>
+                </div>
+                <button class="btn btn-primary next-btn" [disabled]="fieldName === 'none'"
+                    (click)="callEvaluateFieldChoice()">
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end of second question  part 2 -->

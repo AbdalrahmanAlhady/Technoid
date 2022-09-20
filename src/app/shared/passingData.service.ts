@@ -98,11 +98,11 @@ export class PassingData {
 
     return this.http
       .get<QuestionsFormType>(
-        'https://technoid-2022-default-rtdb.firebaseio.com/questionsData.json'
+        'https://technoid-2022-default-rtdb.firebaseio.com/questionsData/'+userId+'.json'
       )
       .pipe(
-        map((questionsData) => {
-          return questionsData[userId];
+        map((questionsData) => {         
+          return questionsData;
         })
       );
   }
