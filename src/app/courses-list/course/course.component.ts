@@ -15,6 +15,7 @@ export class CourseComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    
     if (this.nestedCourses) {
       this.trackName.toLowerCase() === 'c sharp track'
         ? (this.trackName = 'C# track')

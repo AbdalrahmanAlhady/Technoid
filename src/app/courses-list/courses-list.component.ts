@@ -63,6 +63,7 @@ export class CoursesListComponent implements OnInit, OnDestroy {
       this.showSpinner = false;
       this.showContent = true;
     }, 2000);
+    
   }
 
   setBasicCoursesLinks() {
